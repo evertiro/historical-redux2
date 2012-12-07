@@ -33,7 +33,7 @@ function add_another_section($sections){
         'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', Redux_TEXT_DOMAIN),
         // Redux ships with the glyphicons free icon pack, included in the options folder.
         // Feel free to use them, add your own icons, or leave this blank for the default.
-        'icon' => trailingslashit(get_template_directory_uri()) . 'options/img/glyphicons/glyphicons_062_attach.png',
+        'icon' => trailingslashit(get_template_directory_uri()) . 'options/img/icons/glyphicons_062_attach.png',
         // Leave this as a blank section, no options just some intro text set above.
         'fields' => array()
     );
@@ -97,12 +97,12 @@ function setup_framework_options(){
     $args['share_icons']['twitter'] = array(
         'link' => 'http://twitter.com/ghost1227',
         'title' => 'Follow me on Twitter', 
-        'img' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_322_twitter.png'
+        'img' => Redux_OPTIONS_URL . 'img/icons/glyphicons_322_twitter.png'
     );
     $args['share_icons']['linked_in'] = array(
         'link' => 'http://www.linkedin.com/profile/view?id=52559281',
         'title' => 'Find me on LinkedIn', 
-        'img' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_337_linked_in.png'
+        'img' => Redux_OPTIONS_URL . 'img/icons/glyphicons_337_linked_in.png'
     );
 
     // Enable the import/export feature.
@@ -176,13 +176,13 @@ function setup_framework_options(){
         'desc' => __('<p class="description">This is the description field for this section. HTML is allowed</p>', Redux_TEXT_DOMAIN),
         // Redux ships with the glyphicons free icon pack, included in the options folder.
         // Feel free to use them, add your own icons, or leave this blank for the default.
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_062_attach.png'
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_062_attach.png'
         // Lets leave this as a blank section, no options just some intro text set above.
         //'fields' => array()
     );
 
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_107_text_resize.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_107_text_resize.png',
         'title' => __('Text Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the description field for this section. Again HTML is allowed2</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -341,7 +341,7 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_150_check.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_150_check.png',
         'title' => __('Radio/Checkbox Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -402,7 +402,7 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_157_show_lines.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_157_show_lines.png',
         'title' => __('Select Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -428,7 +428,7 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_023_cogwheels.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_023_cogwheels.png',
         'title' => __('Custom Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -597,7 +597,7 @@ function setup_framework_options(){
     );
 
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_093_crop.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_093_crop.png',
         'title' => __('Non Value Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -663,14 +663,14 @@ function setup_framework_options(){
     $item_info .= '</div>';
 
     $tabs['item_info'] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_195_circle_info.png',
+        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_195_circle_info.png',
         'title' => __('Theme Information', Redux_TEXT_DOMAIN),
         'content' => $item_info
     );
     
     if(file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
         $tabs['docs'] = array(
-            'icon' => Redux_OPTIONS_URL . 'img/glyphicons/glyphicons_071_book.png',
+            'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_071_book.png',
             'title' => __('Documentation', Redux_TEXT_DOMAIN),
             'content' => nl2br(file_get_contents(trailingslashit(dirname(__FILE__)) . 'README.html'))
         );

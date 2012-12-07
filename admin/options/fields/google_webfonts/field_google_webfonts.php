@@ -16,7 +16,7 @@ class Redux_Options_google_webfonts extends Redux_Options {
 
         $fonts = get_transient('redux-opts-google-webfonts');
         if(!is_array(json_decode($fonts))) {
-            $fonts = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=' . $this->args['google_api_key']);
+            $fonts = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=' . $this->args['google_api_key'], array('sslverify' => false));
             $fonts = wp_remote_retrieve_body($fonts);
             set_transient('redux-opts-google-webfonts', $fonts, 60 * 60 * 24);
         }

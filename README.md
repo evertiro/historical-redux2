@@ -34,6 +34,10 @@ Then change the settings as written in the ```options.php``` file.
 
 ## Changelog ##
 
+### Development Branch ###
+
+* Fixed SSL error which occurred occasionally with Google Webfonts 
+
 ### Version 1.0.0 (December 5, 2012) ###
 
 * Based on NHP Theme Options Framework v1.0.6

@@ -39,6 +39,7 @@ Then change the settings as written in the ```options.php``` file.
 ### Development Branch ###
 
 * Fixed SSL error which occurred occasionally with Google Webfonts 
+* Moved glyphicons to img/icons
 
 ### Version 1.0.0 (December 5, 2012) ###
 

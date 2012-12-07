@@ -34,6 +34,10 @@ Then change the settings as written in the ```options.php``` file.
 * Easily add page help through the class
 * Much more
 
+## Are you using Redux? ##
+
+Send me an email at ghost1227@reduxframework.com so I can add you to our user spotlight!
+
 ## Changelog ##
 
 ### Development Branch ###

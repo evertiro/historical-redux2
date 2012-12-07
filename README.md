@@ -4,6 +4,8 @@ Wordpress options framework which uses the [WordPress Settings API](http://codex
 
 ## Donate to the Framework ##
 
+I develop Redux (and my other projects) because I enjoy them, and almost exclusively release them to the community as open source projects. If you can, please donate to help support the ongoing development of Redux Framework!
+
 [![Donate to the framework](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Donate to the framework")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQJDSRRZVKRGU)
 
 ## Simple Usage ##

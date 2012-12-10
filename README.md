@@ -13,7 +13,7 @@ I develop Redux (and my other projects) because I enjoy them, and almost exclusi
 Simply include the ```options.php``` file in your theme or plugin, like so:
 
 ```php
-get_template_part('redux', 'options');
+get_template_part('redux', 'framework');
 ```
 
 Then change the settings as written in the ```options.php``` file.

@@ -72,7 +72,7 @@ function setup_framework_options(){
     //$args['dev_mode'] = true;
 
     // If you want to use Google Webfonts, you MUST define the api key.
-    $args['google_api_key'] = 'AIzaSyCIxnEtlyhwLcsfIe0U5xLvew2b1C9aijU';
+    //$args['google_api_key'] = 'xxxx';
 
     // Define the starting tab for the option panel.
     // Default: '0';

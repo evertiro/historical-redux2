@@ -554,7 +554,7 @@ if(!class_exists('Redux_Options') ){
                 delete_transient('redux-opts-saved');
             }
 
-            echo '<div id="redux-opts-save-warn">' . apply_filters('redux-opts-changed-text-' . $this->args['opt_name'], __('<strong>Settings have changed!, you should save them!</strong>', Redux_TEXT_DOMAIN)) . '</div>';
+            echo '<div id="redux-opts-save-warn">' . apply_filters('redux-opts-changed-text-' . $this->args['opt_name'], __('<strong>Settings have changed, you should save them!</strong>', Redux_TEXT_DOMAIN)) . '</div>';
             echo '<div id="redux-opts-field-errors">' . __('<strong><span></span> error(s) were found!</strong>', Redux_TEXT_DOMAIN) . '</div>';
             echo '<div id="redux-opts-field-warnings">' . __('<strong><span></span> warning(s) were found!</strong>', Redux_TEXT_DOMAIN).'</div>';
                 

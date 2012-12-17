@@ -581,11 +581,13 @@ if(!class_exists('Redux_Options') ){
                 echo '<li class="divide">&nbsp;</li>';
             }
 
-            foreach($this->extra_tabs as $k => $tab) {
-                $icon = (!isset($tab['icon'])) ? '<img src="' . $this->url . 'img/icons/glyphicons_019_cogwheel.png" /> ' : '<img src="' . $tab['icon'] . '" /> ';
-                echo '<li id="' . $k . '_section_group_li" class="redux-opts-group-tab-link-li">';
-                echo '<a href="javascript:void(0);" id="' . $k . '_section_group_li_a" class="redux-opts-group-tab-link-a custom-tab" data-rel="' . $k . '">' . $icon . '<span>' . $tab['title'] . '</span></a>';
-                echo '</li>';
+            if(is_array($this->extra_tabs)) {
+                foreach($this->extra_tabs as $k => $tab) {
+                    $icon = (!isset($tab['icon'])) ? '<img src="' . $this->url . 'img/icons/glyphicons_019_cogwheel.png" /> ' : '<img src="' . $tab['icon'] . '" /> ';
+                    echo '<li id="' . $k . '_section_group_li" class="redux-opts-group-tab-link-li">';
+                    echo '<a href="javascript:void(0);" id="' . $k . '_section_group_li_a" class="redux-opts-group-tab-link-a custom-tab" data-rel="' . $k . '">' . $icon . '<span>' . $tab['title'] . '</span></a>';
+                    echo '</li>';
+                }
             }
 
             if(true === $this->args['dev_mode']) {
@@ -652,11 +654,13 @@ if(!class_exists('Redux_Options') ){
                 echo '</div>';
             }
 
-            foreach($this->extra_tabs as $k => $tab) {
-                echo '<div id="' . $k . '_section_group' . '" class="redux-opts-group-tab">';
-                echo '<h3>' . $tab['title'] . '</h3>';
-                echo $tab['content'];
-                echo '</div>';
+            if(is_array($this->extra_tabs)) {
+                foreach($this->extra_tabs as $k => $tab) {
+                    echo '<div id="' . $k . '_section_group' . '" class="redux-opts-group-tab">';
+                    echo '<h3>' . $tab['title'] . '</h3>';
+                    echo $tab['content'];
+                    echo '</div>';
+                }
             }
 
             if(true === $this->args['dev_mode']) {

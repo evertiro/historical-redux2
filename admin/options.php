@@ -324,10 +324,10 @@ function setup_framework_options(){
             array(
                 'id' => '9',
                 'type' => 'editor',
-                'title' => __('Editor Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Editor Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Can also use the validation methods if required', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
-                'std' => 'OOOOOOhhhh, rich editing.'
+                'std' => 'OOOOOOhhhh, rich editing.',
             ),
             array(
                 'id' => 'editor2',
@@ -335,7 +335,8 @@ function setup_framework_options(){
                 'title' => __('Editor Option 2', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('Can also use the validation methods if required', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
-                'std' => 'OOOOOOhhhh, rich editing2.'
+                'std' => 'OOOOOOhhhh, rich editing with auto paragraphs disabled.',
+                'autop' => false
             )
         )
     );

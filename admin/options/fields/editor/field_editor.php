@@ -24,11 +24,11 @@ class Redux_Options_editor extends Redux_Options {
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
-        //echo '<textarea id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $class . '" rows="6" >' . $this->value . '</textarea>';
+
         $settings = array(
             'textarea_name' => $this->args['opt_name'] . '[' . $this->field['id'] . ']',
             'editor_class' => $class,
-            'wpautop' => false
+            'wpautop' => ($this->field['autop'] == false ? 'false' : 'true')
         );
         wp_editor($this->value, $this->field['id'], $settings );
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br/><span class="description">' . $this->field['desc'] . '</span>' : '';

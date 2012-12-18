@@ -212,6 +212,13 @@ function setup_framework_options(){
                 'std' => 'test@test.com'
             ),
             array(
+                'id' => 'password',
+                'type' => 'password',
+                'title' => __('Password Option', Redux_TEXT_DOMAIN),
+                'sub_desc' => __('This is a little space under the field title which can be used for additonal info.', Redux_TEXT_DOMAIN),
+                'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
+            ),
+            array(
                 'id' => 'multi_text',
                 'type' => 'multi_text',
                 'title' => __('Multi Text Option', Redux_TEXT_DOMAIN),

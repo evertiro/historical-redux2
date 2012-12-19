@@ -1,49 +1,64 @@
 /*global jQuery, document, redux_upload, formfield:true, preview:true, tb_show, window, imgurl:true, tb_remove, $relid:true*/
-jQuery(document).ready(function () {
-    "use strict";
+/*
+This is the uploader for wordpress starting from version 3.5
+*/
+jQuery(document).ready(function(){
 
-    /*
-     *
-     * Redux_Options_upload function
-     * Adds media upload functionality to the page
-     *
-     */
+            jQuery(".redux-opts-upload").click( function( event ) {
+ 
+                var relid = jQuery(this).attr('rel-id');
 
-    var header_clicked = false;
+                event.preventDefault();
 
-    jQuery("img[src='']").attr("src", redux_upload.url);
+                // If the media frame already exists, reopen it.
+                if ( typeof(custom_file_frame)!=="undefined" ) {
+                    custom_file_frame.open();
+                    return;
+                }
 
-    jQuery('.redux-opts-upload').click(function () {
-        header_clicked = true;
-        formfield = jQuery(this).attr('rel-id');
-        preview = jQuery(this).prev('img');
-        tb_show('', 'media-upload.php?type=image&amp;post_id=0&amp;TB_iframe=true');
-        return false;
-    });
+                // Create the media frame.
+                custom_file_frame = wp.media.frames.customHeader = wp.media({
+                    // Set the title of the modal.
+                    title: jQuery(this).data("choose"),
 
-    jQuery('.redux-opts-upload-remove').click(function () {
-        $relid = jQuery(this).attr('rel-id');
-        jQuery('#' + $relid).val('');
+                    // Tell the modal to show only images. Ignore if want ALL
+                    library: {
+                        type: 'image'
+                    },
+                    // Customize the submit button.
+                    button: {
+                        // Set the text of the button.
+                        text: jQuery(this).data("update")
+                    }
+                });
+
+                custom_file_frame.on( "select", function() {
+                    // Grab the selected attachment.
+                    var attachment = custom_file_frame.state().get("selection").first();
+
+                    // Update value of the targetfield input with the attachment url.
+                    jQuery('.redux-opts-screenshot').attr('src', attachment.attributes.url);
+                    jQuery('#' + relid ).val(attachment.attributes.url);
+
+                    jQuery('.redux-opts-upload').hide();
+                    jQuery('.redux-opts-screenshot').show();
+                    jQuery('.redux-opts-upload-remove').show();
+            });
+
+            custom_file_frame.open();
+        });
+
+    jQuery(".redux-opts-upload-remove").click( function( event ) {
+
+        var relid = jQuery(this).attr('rel-id');
+        console.log("hahaha");
+
+        event.preventDefault();
+
+        jQuery('#' + relid).val('');
         jQuery(this).prev().fadeIn('slow');
-        jQuery(this).prev().prev().fadeOut('slow', function () { jQuery(this).attr("src", redux_upload.url); });
+        jQuery('.redux-opts-screenshot').fadeOut('slow');
         jQuery(this).fadeOut('slow');
     });
 
-    // Store original function
-    window.original_send_to_editor = window.send_to_editor;
-
-    window.send_to_editor = function (html) {
-        if (header_clicked) {
-            imgurl = jQuery('img', html).attr('src');
-            jQuery('#' + formfield).val(imgurl);
-            jQuery('#' + formfield).next().fadeIn('slow');
-            jQuery('#' + formfield).next().next().fadeOut('slow');
-            jQuery('#' + formfield).next().next().next().fadeIn('slow');
-            jQuery(preview).attr('src', imgurl);
-            tb_remove();
-            header_clicked = false;
-        } else {
-            window.original_send_to_editor(html);
-        }
-    }
 });

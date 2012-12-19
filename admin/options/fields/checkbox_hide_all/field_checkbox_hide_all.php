@@ -6,7 +6,7 @@ class Redux_Options_checkbox_hide_all extends Redux_Options {
      *
      * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
      *
-     * @since Redux_Options 1.0.0
+     * @since Redux_Options 1.0.1
     */
     function __construct($field = array(), $value ='', $parent) {
         parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
@@ -20,7 +20,7 @@ class Redux_Options_checkbox_hide_all extends Redux_Options {
      *
      * Takes the vars and outputs the HTML for the field in the settings
      *
-     * @since Redux_Options 1.0.0
+     * @since Redux_Options 1.0.1
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
@@ -34,7 +34,7 @@ class Redux_Options_checkbox_hide_all extends Redux_Options {
      *
      * If this field requires any scripts, or css define this function and register/enqueue the scripts/css
      *
-     * @since Redux_Options 1.0.0
+     * @since Redux_Options 1.0.1
     */
     function enqueue() {
         wp_enqueue_script(

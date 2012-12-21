@@ -44,7 +44,7 @@ class Redux_Options_upload extends Redux_Options {
 
         if ( $wp_version < "3.5" ) {
             wp_enqueue_script(
-                'redux-opts-field-upload-js_3_4', 
+                'redux-opts-field-upload-js', 
                 Redux_OPTIONS_URL . 'fields/upload/field_upload_3_4.js', 
                 array('jquery', 'thickbox', 'media-upload'),
                 time(),
@@ -53,7 +53,7 @@ class Redux_Options_upload extends Redux_Options {
             wp_enqueue_style('thickbox');// thanks to https://github.com/rzepak
         } else {
             wp_enqueue_script(
-                'redux-opts-field-upload-js_3_4', 
+                'redux-opts-field-upload-js', 
                 Redux_OPTIONS_URL . 'fields/upload/field_upload.js', 
                 array('jquery'),
                 time(),

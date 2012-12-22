@@ -14,9 +14,9 @@ jQuery(document).ready(function () {
 
     var header_clicked = false;
     var formfield;
-	var preview;
-	var $relid;
-	var imgurl;
+    var preview;
+    var $relid;
+    var imgurl;
 
     jQuery("img[src='']").attr("src", redux_upload.url);
 

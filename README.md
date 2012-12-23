@@ -10,13 +10,38 @@ I develop Redux (and my other projects) because I enjoy them, and almost exclusi
 
 ## Simple Usage ##
 
-Simply include the ```options.php``` file in your theme or plugin, like so:
+Download Redux [here](https://github.com/ghost1227/Redux-Framework/archive/stable.zip) and unzip it in your theme. Rename the Redux directory to `admin/`.
 
-```php
-get_template_part('redux', 'framework');
+```bash
+$ cd my-theme
+$ unzip ~/Downloads/Redux-Framework-master.zip -d admin
 ```
 
-Then change the settings as written in the ```options.php``` file.
+Alternatively clone the repository using git:
+
+```bash
+$ cd my-theme
+$ git clone git://github.com/ghost1227/Redux-Framework/ admin
+```
+
+Or use:
+
+```bash
+$ cd my-theme
+$ git submodule add git://github.com/ghost1227/Redux-Framework/ admin
+```
+
+Next, copy `admin/options.php` to the base of your theme directory, so it won't get overwritten when you update Redux.
+
+Include the `options.php` file for use in your theme by adding this to your `functions.php`:
+
+```php
+get_template_part('theme', 'settings');
+```
+
+Finally change the settings as needed in `options.php`. The file is heavily documented, the rest of the [documention][docs] is a work in progress.
+
+[docs]: http://plovs.github.com/Redux-Framework-Docs/index.html
 
 ## Features ##
 

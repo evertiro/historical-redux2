@@ -49,6 +49,7 @@ jQuery(document).ready(function () {
     }
 
     jQuery('input, textarea, select').change(function () {
+        if(this.id === 'google_webfonts' && this.value === '') return;
         jQuery('#redux-opts-save-warn').slideDown('slow');
     });
 

@@ -260,12 +260,24 @@ if(!class_exists('Redux_Options') ){
             );
             
             wp_register_style(
+                'redux-lte-ie8',
+                $this->url . 'css/lteie8.css',
+                array('farbtastic'),
+                time(),
+                'all'
+            );
+			
+			$wp_styles->add_data( 'redux-lte-ie8', 'conditional', 'lte IE 8' );
+            
+            wp_register_style(
                 'redux-opts-jquery-ui-css',
                 apply_filters('redux-opts-ui-theme', $this->url . 'css/jquery-ui-aristo/aristo.css'),
                 '',
                 time(),
                 'all'
             );
+
+            wp_enqueue_style('redux-lte-ie8');
 
             if($this->args['admin_stylesheet'] == 'standard') {
                 wp_enqueue_style('redux-opts-css');

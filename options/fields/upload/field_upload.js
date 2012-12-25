@@ -52,15 +52,14 @@ jQuery(document).ready(function(){
         });
 
     jQuery(".redux-opts-upload-remove").click( function( event ) {
-
+        var activeFileUploadContext = jQuery(this).parent();
         var relid = jQuery(this).attr('rel-id');
-        console.log("hahaha");
 
         event.preventDefault();
 
         jQuery('#' + relid).val('');
         jQuery(this).prev().fadeIn('slow');
-        jQuery('.redux-opts-screenshot').fadeOut('slow');
+        jQuery('.redux-opts-screenshot',activeFileUploadContext).fadeOut('slow');
         jQuery(this).fadeOut('slow');
     });
 

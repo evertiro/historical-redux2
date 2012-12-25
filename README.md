@@ -31,15 +31,15 @@ $ cd my-theme
 $ git submodule add git://github.com/ghost1227/Redux-Framework/ admin
 ```
 
-Next, copy `admin/options.php` to the base of your theme directory, so it won't get overwritten when you update Redux.
+Next, copy `admin/defaults.php` to the base of your theme directory, so it won't get overwritten when you update Redux.
 
-Include the `options.php` file for use in your theme by adding this to your `functions.php`:
+Include the `defaults.php` file for use in your theme by adding this to your `functions.php`:
 
 ```php
 get_template_part('theme', 'settings');
 ```
 
-Finally change the settings as needed in `options.php`. The file is heavily documented, the rest of the [documention][docs] is a work in progress.
+Finally change the settings as needed in `defaults.php`. The file is heavily documented, the rest of the [documention][docs] is a work in progress.
 
 [docs]: http://plovs.github.com/Redux-Framework-Docs/index.html
 

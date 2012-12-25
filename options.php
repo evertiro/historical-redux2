@@ -14,7 +14,7 @@ define('Redux_TEXT_DOMAIN', 'redux-opts');
  */
 //define('Redux_OPTIONS_URL', site_url('path the options folder'));
 if(!class_exists('Redux_Options')){
-    require_once(dirname(__FILE__) . '/options/options.php');
+    require_once(dirname(__FILE__) . '/options/defaults.php');
 }
 
 /*

@@ -359,6 +359,7 @@ function setup_framework_options(){
                 'title' => __('Checkbox Option', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
+                'switch' => true,
                 'std' => '1 '// 1 = checked | 0 = unchecked
             ),
             array(

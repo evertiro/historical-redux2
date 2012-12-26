@@ -28,7 +28,7 @@ class Redux_Options_editor extends Redux_Options {
         $settings = array(
             'textarea_name' => $this->args['opt_name'] . '[' . $this->field['id'] . ']',
             'editor_class' => $class,
-            'wpautop' => (isset($this->field['autop'])) ? $this->field['autop'] : 'true'
+            'wpautop' => (isset($this->field['autop'])) ? $this->field['autop'] : true
         );
         wp_editor($this->value, $this->field['id'], $settings );
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br/><span class="description">' . $this->field['desc'] . '</span>' : '';

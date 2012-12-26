@@ -243,6 +243,8 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _enqueue() {
+            global $wp_styles;
+            
             wp_register_style(
                 'redux-opts-css', 
                 $this->url . 'css/options.css',
@@ -267,7 +269,7 @@ if(!class_exists('Redux_Options') ){
                 'all'
             );
 			
-			$wp_styles->add_data( 'redux-lte-ie8', 'conditional', 'lte IE 8' );
+            $wp_styles->add_data( 'redux-lte-ie8', 'conditional', 'lte IE 8' );
             
             wp_register_style(
                 'redux-opts-jquery-ui-css',

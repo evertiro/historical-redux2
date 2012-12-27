@@ -546,7 +546,7 @@ if(!class_exists('Redux_Options') ){
 
             do_action('redux-opts-page-before-form-' . $this->args['opt_name']);
 
-            echo '<form method="post" action="defaults.php" enctype="multipart/form-data" id="redux-opts-form-wrapper">';
+            echo '<form method="post" action="options.php" enctype="multipart/form-data" id="redux-opts-form-wrapper">';
             settings_fields($this->args['opt_name'] . '_group');
 
             $this->options['last_tab'] = (isset($_GET['tab']) && !get_transient('redux-opts-saved')) ? $_GET['tab'] : $this->args['last_tab'];

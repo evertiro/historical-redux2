@@ -24,11 +24,17 @@ class Redux_Options_color extends Redux_Options {
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
-        echo '<div class="farb-popup-wrapper">';
-        echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $this->value . '" class="' . $class . ' popup-colorpicker" style="width:70px;"/>';
-        echo '<div class="farb-popup"><div class="farb-popup-inside"><div id="' . $this->field['id'] . 'picker" class="color-picker"></div></div></div>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
-        echo '</div>';
+
+        if(get_bloginfo('version') >= '3.5') {
+            echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $this->value . '" class="' . $class . ' popup-colorpicker" style="width: 70px;" data-default-color="' . esc_attr($this->value) . '"/>';
+            echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+        } else {
+            echo '<div class="farb-popup-wrapper">';
+            echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $this->value . '" class="' . $class . ' popup-colorpicker" style="width:70px;"/>';
+            echo '<div class="farb-popup"><div class="farb-popup-inside"><div id="' . $this->field['id'] . 'picker" class="color-picker"></div></div></div>';
+            echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+            echo '</div>';
+        }
     }
 
     /**
@@ -39,12 +45,23 @@ class Redux_Options_color extends Redux_Options {
      * @since Redux_Options 1.0.0
     */
     function enqueue() {
-        wp_enqueue_script(
-            'redux-opts-field-color-js', 
-            Redux_OPTIONS_URL . 'fields/color/field_color.js', 
-            array('jquery', 'farbtastic'),
-            time(),
-            true
-        );
+        if(get_bloginfo('version') >= '3.5') {
+            wp_enqueue_style('wp-color-picker');
+            wp_enqueue_script(
+                'redux-opts-field-color-js',
+                Redux_OPTIONS_URL . 'fields/color/field_color.js',
+                array('wp-color-picker'),
+                time(),
+                true
+            );
+        } else {
+            wp_enqueue_script(
+                'redux-opts-field-color-js', 
+                Redux_OPTIONS_URL . 'fields/color/field_color_farb.js', 
+                array('jquery', 'farbtastic'),
+                time(),
+                true
+            );
+        }
     }
 }

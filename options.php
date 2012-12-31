@@ -600,7 +600,7 @@ function setup_framework_options(){
                 'type' => 'google_webfonts',
                 'title' => __('Google Webfonts', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('This is a completely unique field type', Redux_TEXT_DOMAIN),
-                'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\t forget to set your API key!', Redux_TEXT_DOMAIN)
+                'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\'t forget to set your API key!', Redux_TEXT_DOMAIN)
             )                            
         )
     );

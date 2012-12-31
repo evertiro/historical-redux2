@@ -69,12 +69,6 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 * Fixed SSL error which occurred occasionally with Google Webfonts 
 * Moved glyphicons to img/icons
-* Added optional flag for wpautop on editors
-* Added password field type
-* Added checkbox_hide_all option
-* Added WP3.5 media chooser
-* Added Google webfonts previews
-* Updated to WP3.5 color picker
 
 ### Version 1.0.0 (December 5, 2012) ###
 

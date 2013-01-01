@@ -27,9 +27,9 @@ class Redux_Options_radio_img extends Redux_Options {
         echo '<fieldset>';
         foreach($this->field['options'] as $k => $v) {
             $selected = (checked($this->value, $k, false) != '') ? ' redux-radio-img-selected' : '';
-            echo '<label class="redux-radio-img' . $selected . ' redux-radio-img-' . $this->field['id'] . '" for="' . $this->field['id'] . '_' . array_search($k,array_keys($this->field['options'])) . '">';
+            echo '<label class="redux-radio-img' . $selected . ' redux-radio-img-' . $this->field['id'] . '" for="' . $this->field['id'] . '_' . array_search($k,array_keys($this->field['options'])) . '" onclick="jQuery:redux_radio_img_select(\'' . $this->field['id'] . '_' . array_search($k,array_keys($this->field['options'])) . '\', \'' . $this->field['id'] . '\');" >';
             echo '<input type="radio" id="' . $this->field['id'] . '_' . array_search($k,array_keys($this->field['options'])) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . ' value="' . $k . '" ' .checked($this->value, $k, false) . '/>';
-            echo '<img src="' . $v['img'] . '" alt="' . $v['title'] . '" onclick="jQuery:redux_radio_img_select(\'' . $this->field['id'] . '_' . array_search($k,array_keys($this->field['options'])) . '\', \'' . $this->field['id'] . '\');" />';
+            echo '<img src="' . $v['img'] . '" alt="' . $v['title'] . '" />';
             echo '<br/><span>' . $v['title'] . '</span>';
             echo '</label>';
         }

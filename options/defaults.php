@@ -555,6 +555,7 @@ if(!class_exists('Redux_Options') ){
 
             echo '<div id="redux-opts-header">';
             submit_button('', 'primary', '', false);
+            echo ' &nbsp; ';
             submit_button(__('Reset to Defaults', Redux_TEXT_DOMAIN), 'secondary', $this->args['opt_name'] . '[defaults]', false);
             echo '<div class="clear"></div><!--clearfix-->';
             echo '</div>';
@@ -703,6 +704,7 @@ if(!class_exists('Redux_Options') ){
             }
 
             submit_button('', 'primary', '', false);
+            echo ' &nbsp; ';
             submit_button(__('Reset to Defaults', Redux_TEXT_DOMAIN), 'secondary', $this->args['opt_name'] . '[defaults]', false);
             echo '<div class="clear"></div><!--clearfix-->';
             echo '</div>';

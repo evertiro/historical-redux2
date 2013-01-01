@@ -335,10 +335,16 @@
 	margin: 6px;
 	display: inline-block;
 	padding: 10px;
+	border: 1px solid #FFF;
+}
+
+.redux-radio-img:hover {
+	border: 1px solid #EDEDED;
 }
 
 .redux-radio-img-selected {
 	background-color: #f9f9f9;
+	border: 1px solid #EDEDED;
 }
 
 .redux-radio-img img,

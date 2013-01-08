@@ -25,12 +25,17 @@ class Redux_Options_checkbox_hide_below extends Redux_Options {
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
         $next_to_hide = (isset($this->field['next_to_hide'])) ? $this->field['next_to_hide'] : '1';
+        $switch = isset($this->field['switch']) ? $this->field['switch'] : false; ?>
 
-        echo '<label for="' . $this->field['id'] . '">';
-            echo '<input data-amount="' . $next_to_hide . '" type="checkbox" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="' . $class . ' redux-opts-checkbox-hide-below" ' . checked($this->value, '1', false) . ' /> ';
+        <label <?php if($switch) : ?>class="switch_wrap"<?php endif; ?> for="<?php echo $this->field['id']; ?>">
+            <?php echo '<input data-amount="' . $next_to_hide . '" type="checkbox" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="' . $class . ' redux-opts-checkbox-hide-below" ' . checked($this->value, '1', false) . ' /> ';
+            if($switch) {
+                echo '<div class="switch"><span class="bullet"></span></div>';
+            }
             if (isset($this->field['desc']) && !empty($this->field['desc'])) echo $this->field['desc'];
-        echo '</label>';
-    }
+        echo '</label>'; ?>
+        </label>
+    <?php }
 
     /**
      * Enqueue Function.

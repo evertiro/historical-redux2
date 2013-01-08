@@ -24,9 +24,12 @@ class Redux_Options_checkbox_hide_below extends Redux_Options {
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
-        echo ($this->field['desc'] != '') ? ' <label for="' . $this->field['id'] . '">' : '';
-        echo '<input type="checkbox" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="' . $class . ' redux-opts-checkbox-hide-below" ' . checked($this->value, '1', false) . ' />';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' ' . $this->field['desc'] . '</label>' : '';
+        $next_to_hide = (isset($this->field['next_to_hide'])) ? $this->field['next_to_hide'] : '1';
+
+        echo '<label for="' . $this->field['id'] . '">';
+            echo '<input data-amount="' . $next_to_hide . '" type="checkbox" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="' . $class . ' redux-opts-checkbox-hide-below" ' . checked($this->value, '1', false) . ' /> ';
+            if (isset($this->field['desc']) && !empty($this->field['desc'])) echo $this->field['desc'];
+        echo '</label>';
     }
 
     /**

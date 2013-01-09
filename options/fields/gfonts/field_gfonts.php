@@ -51,7 +51,7 @@ class Redux_Options_gfonts extends Redux_Options {
 			        'Georgia, serif' => 'Georgia',
 			        "'Helvetica Neue', Helvetica, Arial, sans-serif" => 'Helvetica/Arial',
 			        "'Courier New', Courier, monospace" => 'Courier',
-			        "Trebuchet MS', Helvetica, sans-serif" => 'Trebuchet MS',
+			        "'Trebuchet MS', Helvetica, sans-serif" => 'Trebuchet MS',
 			        "'Lucida Console', Moncao, monospace" => 'Lucida',
 			        'Tahoma, sans-serif' => 'Tahoma',
 			        'Verdana, sans-serif' => 'Verdana',

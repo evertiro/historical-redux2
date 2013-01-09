@@ -46,12 +46,33 @@ class Redux_Options_gfonts extends Redux_Options {
 
             echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $class . '" rows="6" >';
 
-            foreach ($results['items'] as $font){
-                $font_name = $font['family'];
-                $font_slug = str_replace(' ', '+', $font['family']);
+	        if ($this->field['safe_fonts'] === true) {
+		        $safe_fonts = array(
+			        'Georgia, serif' => 'Georgia',
+			        "'Helvetica Neue', Helvetica, Arial, sans-serif" => 'Helvetica/Arial',
+			        "'Courier New', Courier, monospace" => 'Courier',
+			        "Trebuchet MS', Helvetica, sans-serif" => 'Trebuchet MS',
+			        "'Lucida Console', Moncao, monospace" => 'Lucida',
+			        'Tahoma, sans-serif' => 'Tahoma',
+			        'Verdana, sans-serif' => 'Verdana',
+			        'Impact, Charcoal, sans-serif' => 'Impact'
+		        );
 
-                echo '<option value="' . $font_slug . '" ' . selected($this->value, $font_slug, false) . '>' . $font_name . '</option>';
-            }
+		        echo '<optgroup label="System fonts">';
+			        foreach ($safe_fonts as $k => $font_name) {
+				        echo '<option value="' . $k . '" ' . selected($this->value, $k, false) . '>' . $font_name . '</option>';
+			        }
+		        echo '</optgroup>';
+	        }
+
+	        echo '<optgroup label="Google web fonts">';
+	            foreach ($results['items'] as $font){
+	                $font_name = $font['family'];
+	                $font_slug = str_replace(' ', '+', $font['family']);
+
+	                echo '<option value="' . $font_slug . '" ' . selected($this->value, $font_slug, false) . '>' . $font_name . '</option>';
+	            }
+	        echo '</optgroup>';
 
             echo '</select>';
         }

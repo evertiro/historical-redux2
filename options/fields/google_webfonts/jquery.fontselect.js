@@ -1,18 +1,19 @@
-jQuery(document).ready(function( $ ) {
+jQuery(document).ready(function ($) {
+    var googlefont = jQuery('.font').fontselect();
+    fontset(googlefont);
 
-        jQuery('.font').fontselect().change(function(){
-          var relid = $(this).attr('id');
+    function fontset(googlefont) {
+        var relid = googlefont.attr('id');
 
-          // replace + signs with spaces for css
-          var font = $(this).val().replace(/\+/g, ' ');
-          
-          // split font into family and weight
-          font = font.split(':');
-          
-          // set family on example
-          jQuery('#'+relid+'.example').css('font-family', font[0]);
-        }).trigger('change'); //to update the example on load as well
+        // replace + signs with spaces for css
+        var font = googlefont.val().replace(/\+/g, ' ');
 
+        // split font into family and weight
+        font = font.split(':');
+
+        // set family on example
+        jQuery('#' + relid + '.example').css('font-family', font[0]);
+    }
 });
 
 /*

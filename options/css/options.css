@@ -335,10 +335,16 @@
 	margin: 6px;
 	display: inline-block;
 	padding: 10px;
+	border: 1px solid #FFF;
+}
+
+.redux-radio-img:hover {
+	border: 1px solid #EDEDED;
 }
 
 .redux-radio-img-selected {
 	background-color: #f9f9f9;
+	border: 1px solid #EDEDED;
 }
 
 .redux-radio-img img,
@@ -360,6 +366,18 @@
  * Redux_Options_color
  *
  */
+.iris-picker .iris-slider-offset {
+    position: relative !important;
+    top: 0 !important;
+    bottom: 0 !important;
+}
+
+.iris-picker .ui-slider-vertical {
+    width: auto;
+    height: 100%;
+    background: none;
+}
+
 .farb-popup-wrapper {
 	position: relative;
 	display: block;

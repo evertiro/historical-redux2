@@ -8,20 +8,6 @@ class Redux_Options_google_webfonts extends Redux_Options {
      *
      * @since Redux_Options 1.0.0
     */
-    // function __construct($field = array(), $value ='', $parent) {
-    //     parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
-    //     $this->field = $field;
-    //     $this->value = $value;
-    //     $this->field['fonts'] = array();
-
-    //     $fonts = get_transient('redux-opts-google-webfonts');
-    //     if(!is_array(json_decode($fonts))) {
-    //         $fonts = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=' . $this->args['google_api_key'], array('sslverify' => false));
-    //         $fonts = wp_remote_retrieve_body($fonts);
-    //         set_transient('redux-opts-google-webfonts', $fonts, 60 * 60 * 24);
-    //     }
-    //     $this->field['fonts'] = json_decode($fonts);
-    // }
     function __construct($field = array(), $value ='', $parent) {
         parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
         $this->field = $field;

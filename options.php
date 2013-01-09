@@ -354,12 +354,21 @@ function setup_framework_options(){
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
             array(
+                'id' => 'switch',
+                'type' => 'checkbox',
+                'title' => __('Switch Option', Redux_TEXT_DOMAIN), 
+                'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
+                'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
+                'switch' => true,
+                'std' => '1 '// 1 = checked | 0 = unchecked
+            ),
+            array(
                 'id' => '10',
                 'type' => 'checkbox',
                 'title' => __('Checkbox Option', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
-                'switch' => true,
+                'switch' => false,
                 'std' => '1 '// 1 = checked | 0 = unchecked
             ),
             array(
@@ -600,7 +609,7 @@ function setup_framework_options(){
                 'type' => 'google_webfonts',
                 'title' => __('Google Webfonts', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('This is a completely unique field type', Redux_TEXT_DOMAIN),
-                'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\t forget to set your API key!', Redux_TEXT_DOMAIN)
+                'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\'t forget to set your API key!', Redux_TEXT_DOMAIN)
             )                            
         )
     );

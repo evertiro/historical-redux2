@@ -41,7 +41,7 @@ class Redux_Options_bg_bundle extends Redux_Options {
 	    echo '<td class="compact">';
 	    echo '<strong>Repetition:</strong><div class="clear"></div>';
 	    echo '<select id="' . $this->field['id'] . '-repeat" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][repeat]" rows="6">';
-	    echo '<option value="none" ' . selected($this->value['repeat'], 'none', false) . '>None</option>';
+	    echo '<option value="no-repeat" ' . selected($this->value['repeat'], 'no-repeat', false) . '>None</option>';
 	    echo '<option value="repeat-x" ' . selected($this->value['repeat'], 'repeat-x', false) . '>Repeat Horizontally</option>';
 	    echo '<option value="repeat-y" ' . selected($this->value['repeat'], 'repeat-y', false) . '>Repeat Vertically</option>';
 	    echo '<option value="repeat" ' . selected($this->value['repeat'], 'repeat', false) . '>Both</option>';

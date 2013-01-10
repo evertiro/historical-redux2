@@ -147,6 +147,7 @@ if(!class_exists('Redux_Options') ){
 
             return $defaults;
         }
+    	
     
         /**
          * Set default options on admin_init if option doesn't exist
@@ -154,11 +155,24 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _set_default_options() {
-            if(!get_option($this->args['opt_name'])) {
-                add_option($this->args['opt_name'], $this->_default_values());
-            }
-            $this->options = get_option($this->args['opt_name']);
-        }
+	        $defaults = array();
+	        $this->options = get_option($this->args['opt_name']);
+			
+	        foreach($this->sections as $k => $section) {
+                if(isset($section['fields'])) {
+                    foreach($section['fields'] as $fieldk => $field) {
+                        if(!isset($field['std'])){ $field['std'] = ''; }
+                        if(!isset($this->options[$field['id']]))
+                            $defaults[$field['id']] = $field['std'];
+                        else
+                            $defaults[$field['id']] = $this->options[$field['id']];
+                    }
+                }
+             }
+
+             update_option($this->args['opt_name'], $defaults);
+             $this->options = get_option($this->args['opt_name']);
+         }
 
         /**
          * Class Options Page Function, creates main options page.

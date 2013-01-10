@@ -135,12 +135,16 @@ if(!class_exists('Redux_Options') ){
         */
         function _default_values() {        
             $defaults = array();
-        
+            $this->options = get_option($this->args['opt_name']);
+            
             foreach($this->sections as $k => $section) {
                 if(isset($section['fields'])) {
                     foreach($section['fields'] as $fieldk => $field) {
                         if(!isset($field['std'])){ $field['std'] = ''; }
-                        $defaults[$field['id']] = $field['std'];
+                        if(!isset($this->options[$field['id']]))
+                            $defaults[$field['id']] = $field['std'];
+                        else
+                            $defaults[$field['id']] = $this->options[$field['id']];
                     }
                 }
             }
@@ -154,9 +158,7 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _set_default_options() {
-            if(!get_option($this->args['opt_name'])) {
-                add_option($this->args['opt_name'], $this->_default_values());
-            }
+            update_option($this->args['opt_name'], $this->_default_values());
             $this->options = get_option($this->args['opt_name']);
         }
 

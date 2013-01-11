@@ -171,7 +171,6 @@ if(!class_exists('Redux_Options') ){
              }
 
              update_option($this->args['opt_name'], $defaults);
-             $this->options = get_option($this->args['opt_name']);
          }
 
         /**

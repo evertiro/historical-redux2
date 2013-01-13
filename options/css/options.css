@@ -653,7 +653,9 @@
 
 /* checkbox switch */
 .switch_wrap input[type="checkbox"] {
- display:none;
+  position:absolute;
+  left:-9999px;
+  opacity: 0;
 }
 
 .switch_wrap input[type="checkbox"]:checked + .switch {

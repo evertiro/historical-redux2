@@ -481,7 +481,7 @@ function setup_framework_options(){
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for radio options
                 'std' => '2'
-            ),
+			),
             array(
                 'id' => '19',
                 'type' => 'upload',

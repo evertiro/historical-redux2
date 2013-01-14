@@ -755,12 +755,12 @@
   margin-left: 2px;
 }
 
-/* Fix datepicker empty div at bottom of the page  */
+/* Fix datepicker empty div at bottom of the page */
 #ui-datepicker-div { 
 	display: none;
 }
 
-/* TODO: remove pink */
+/* TODO: remove pink */
 .pink {
 	background: pink;
 }

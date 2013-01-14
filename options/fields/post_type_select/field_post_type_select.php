@@ -24,15 +24,21 @@ class Redux_Options_post_type_select extends Redux_Options {
     */
     function render() {
         $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . ' >';
-        if(!isset($this->field['args'])) { $this->field['args'] = array(); }
+        if (!isset($this->field['args'])) { $this->field['args'] = array(); }
         $args = wp_parse_args($this->field['args'], array('public' => true));
-        $post_types = get_post_types($args, 'object'); 
+        $post_types = get_post_types($args, 'object');
+	    $multiple = (true === $this->field['multiple']) ? ' multiple="multiple" size="' . count($post_types) . '" ' : '';
+	    $field_name = ($multiple) ? $this->args['opt_name'] . '[' . $this->field['id'] . '][]' : $this->args['opt_name'] . '[' . $this->field['id'] . ']';
 
-        foreach($post_types as $k => $post_type) {
-            echo '<option value="' . $k . '"' . selected($this->value, $k, false) . '>' . $post_type->labels->name . '</option>';
-        }
-
+        echo '<select id="' . $this->field['id'] . '" name="' . $field_name . '" ' . $class . $multiple . '">';
+	        foreach($post_types as $k => $post_type) {
+		        if (is_array($this->value)){
+		            $selected = ($multiple && in_array($post_type->name, $this->value)) ? ' selected="selected"' : '';
+		        } else {
+			        $selected = selected($this->value, $k, false);
+		        }
+	            echo '<option value="' . $k . '"' . $selected . '>' . $post_type->labels->name . '</option>';
+	        }
         echo '</select>';
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
     }

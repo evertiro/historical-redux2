@@ -318,10 +318,8 @@ if(!class_exists('Redux_Options') ){
                     foreach($section['fields'] as $fieldk => $field) {
                         if(isset($field['type'])) {
                             $field_class = 'Redux_Options_' . $field['type'];
-                            if(!class_exists($field_class)) {
-                                $class_file = apply_filters('redux-opts-typeclass-load', $field_class, $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
-                                if ( $class_file )
-                                    require_once($class_file);
+							if(!class_exists($field_class)) {
+								require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
                             }
 
                             if(class_exists($field_class) && method_exists($field_class, 'enqueue')) {
@@ -521,10 +519,8 @@ if(!class_exists('Redux_Options') ){
                         if(isset($field['validate'])) {
                             $validate = 'Redux_Validation_' . $field['validate'];
 
-                            if(!class_exists($validate)) {
-                                $class_file = apply_filters('redux-opts-validateclass-load', $validate, $this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php');
-                                if ( $class_file )
-                                    require_once($class_file);
+							if(!class_exists($validate)) {
+								require_once($this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php');
                             }
             
                             if(class_exists($validate)) {
@@ -838,10 +834,8 @@ if(!class_exists('Redux_Options') ){
             if(isset($field['type'])) {
                 $field_class = 'Redux_Options_'.$field['type'];
 
-                if(class_exists($field_class)) {
-                    $class_file = apply_filters('redux-opts-typeclass-load', $field_class, $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
-                    if ( $class_file )
-                        require_once($class_file);
+				if(class_exists($field_class)) {
+					require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
                 }
 
                 if(class_exists($field_class)) {
@@ -853,6 +847,6 @@ if(!class_exists('Redux_Options') ){
                     do_action('redux-opts-after-field-' . $this->args['opt_name'], $field, $value);
                 }
             }
-        }
+		}
     }
 }

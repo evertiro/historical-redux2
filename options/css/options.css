@@ -653,7 +653,9 @@
 
 /* checkbox switch */
 .switch_wrap input[type="checkbox"] {
- display:none;
+  position:absolute;
+  left:-9999px;
+  opacity: 0;
 }
 
 .switch_wrap input[type="checkbox"]:checked + .switch {
@@ -751,6 +753,11 @@
 
 .switch_wrap .switch .bullet::after {
   margin-left: 2px;
+}
+
+/* Fix datepicker empty div at bottom of the page  */
+#ui-datepicker-div { 
+	display: none;
 }
 
 /* TODO: remove pink */

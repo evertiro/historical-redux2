@@ -497,7 +497,12 @@ if(!class_exists('Redux_Options') ){
                 if(isset($section['fields'])) {
                     foreach($section['fields'] as $fieldk => $field) {
                         $field['section_id'] = $k;
-                    
+		        
+                        if(isset($field['type']) && ( $field['type']=='checkbox' || $field['type']=='checkbox_hide_below' || $field['type']=='checkbox_hide_all' )){
+                            if(!isset($plugin_options[$field['id']]))
+                                 $plugin_options[$field['id']] = 0;
+                        }
+
                         if(isset($field['type']) && $field['type'] == 'multi_text'){ continue; } // We can't validate this yet
                     
                         if(!isset($plugin_options[$field['id']]) || $plugin_options[$field['id']] == '') {

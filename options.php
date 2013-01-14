@@ -68,7 +68,7 @@ function setup_framework_options(){
     $args = array();
 
     // Setting dev mode to true allows you to view the class settings/info in the panel.
-    // Default: false
+    // Default: true
     //$args['dev_mode'] = true;
 
     // If you want to use Google Webfonts, you MUST define the api key.

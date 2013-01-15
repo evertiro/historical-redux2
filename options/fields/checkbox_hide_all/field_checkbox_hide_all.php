@@ -24,9 +24,15 @@ class Redux_Options_checkbox_hide_all extends Redux_Options {
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
-        echo ($this->field['desc'] != '') ? ' <label for="' . $this->field['id'] . '">' : '';
+    	$switch = isset($this->field['switch']) ? $this->field['switch'] : false;
+		
+		echo '<label for="' . $this->field['id'] . '"';
+		if ($switch) echo ' class="switch_wrap"';
+		echo '>';
         echo '<input type="checkbox" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="' . $class . ' redux-opts-checkbox-hide-all" ' . checked($this->value, '1', false) . ' />';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' ' . $this->field['desc'] . '</label>' : '';
+		if($switch) { echo '<div class="switch"><span class="bullet"></span></div>'; } 
+		if (isset($this->field['desc']) && !empty($this->field['desc'])) echo $this->field['desc'];
+		echo '</label>';
     }
 
     /**

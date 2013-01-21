@@ -100,11 +100,13 @@ if(!class_exists('Redux_Options') ){
          *
          * @since Redux_Options 1.0.1
          * @param string $opt_name: option name to return
-         * @param mixed $default (null): value to return if option not set
+         * @param mixed $default (null): value to return if std not set
         */
         function _get_std($opt_name, $default = null) {
             if ($this->args['std_show'] == true ) {
-                if ( is_null($this->options_defaults) ) $this->_default_values(); // fill cache
+                if ( is_null($this->options_defaults) ) 
+                    $this->_default_values(); // fill cache
+
                 $default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
             }
             return $default;
@@ -119,16 +121,6 @@ if(!class_exists('Redux_Options') ){
         */
         function get($opt_name, $default = null) {
             return ( !empty($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
-/*
-
-            if ( is_null($this->options_defaults) ) _default_values(); // fill cache
-            //if std_show set $default to std value, return orig. $default only if there is no std set 
-            $default = ( $this->args['std_show'] == true && array_key_exists($opt_name, $this->options_defaults)
-
-                isset($this->options_defaults[$opt_name]) ) ? $defaults[$opt_name] : $default;
-            echo $opt_name . ': ' . ( isset($defaults[$opt_name]) ? 'set' : 'not set'); 
-            return (!empty($this->options[$opt_name])) ? $this->options[$opt_name] : $default;
-  */
         }
     
         /**
@@ -153,11 +145,10 @@ if(!class_exists('Redux_Options') ){
         */
         function show($opt_name, $default = '') {
             $option = $this->get($opt_name);
-            if(!is_array($option) && $option != '') {
+            if( !is_array($option) && $option != '' ) 
                 echo $option;
-            } elseif($default != '') {
-                echo $default;
-            }
+            elseif($default != '') 
+                echo $this->_get_std($opt_name, $default);
         }
 
         /**
@@ -166,10 +157,7 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _default_values() {        
-            if ( is_null($this->sections) ) 
-                return array(); // return empty array 
-
-            if ( is_null($this->options_defaults) ) {
+            if ( !is_null($this->sections) && is_null($this->options_defaults) ) {
                 // fill the cache
                 foreach($this->sections as $section) {
                     if(isset($section['fields'])) {
@@ -846,7 +834,7 @@ if(!class_exists('Redux_Options') ){
         /**
          * Field HTML OUTPUT.
          *
-         * Gets option from options array, then calls the speicfic field type class - allows extending by other devs
+         * Gets option from options array, then calls the specific field type class - allows extending by other devs
          * @since Redux_Options 1.0.0
         */
         function _field_input($field) {
@@ -868,13 +856,7 @@ if(!class_exists('Redux_Options') ){
                 }
 
                 if(class_exists($field_class)) {
-                    $value = $this->get($field['std'], '');
-                    /*
-                    if ( !isset($this->options[$field['id']]) && $this->args['std_show'] == true && isset($field['std']) )
-                        $value = $field['std'];
-                    else
-                        $value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
-                    */
+                    $value = $this->get($field['id'], '');
                     do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                     $render = '';
                     $render = new $field_class($field, $value, $this);

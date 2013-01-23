@@ -1,5 +1,5 @@
 <?php
-class Redux_Options_upload extends Redux_Options {
+class Redux_Options_upload {
 
     /**
      * Field Constructor.
@@ -9,9 +9,9 @@ class Redux_Options_upload extends Redux_Options {
      * @since Redux_Options 1.0.0
     */
     function __construct($field = array(), $value ='', $parent = '') {
-        parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
         $this->field = $field;
-        $this->value = $value;
+		$this->value = $value;
+		$this->args = $parent->args;
     }
 
     /**

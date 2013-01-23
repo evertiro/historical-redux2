@@ -1,5 +1,5 @@
 <?php
-class Redux_Options_select_hide_below extends Redux_Options {
+class Redux_Options_select_hide_below {
 
     /**
      * Field Constructor.
@@ -9,10 +9,9 @@ class Redux_Options_select_hide_below extends Redux_Options {
      * @since Redux_Options 1.0.0
     */
     function __construct($field = array(), $value ='', $parent) {
-        parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
         $this->field = $field;
-        $this->value = $value;
-        //$this->render();
+		$this->value = $value;
+		$this->args = $parent->args;
     }
 
     /**

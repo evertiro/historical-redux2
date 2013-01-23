@@ -138,7 +138,10 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _default_values() {        
-            $defaults = array();
+			$defaults = array();
+
+			if(is_null($this->sections))
+				return;
         
             foreach($this->sections as $k => $section) {
                 if(isset($section['fields'])) {
@@ -410,6 +413,9 @@ if(!class_exists('Redux_Options') ){
         */
         function _register_setting() {
             register_setting($this->args['opt_name'] . '_group', $this->args['opt_name'], array(&$this,'_validate_options'));
+
+			if(is_null($this->sections))
+				return;
 
             foreach($this->sections as $k => $section) {
                 add_settings_section($this->args['opt_name'] . $k . '_section', $section['title'], array(&$this, '_section_desc'), $this->args['opt_name'] . $k . '_section_group');

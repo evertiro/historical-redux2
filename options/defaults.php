@@ -155,24 +155,21 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _set_default_options() {
-	        $defaults = array();
-	        $this->options = get_option($this->args['opt_name']);
-			
-	        foreach($this->sections as $k => $section) {
+	    $defaults = get_option($this->args['opt_name']);
+
+	    foreach($this->sections as $k => $section) {
                 if(isset($section['fields'])) {
                     foreach($section['fields'] as $fieldk => $field) {
                         if(!isset($field['std'])){ $field['std'] = ''; }
-                        if(!isset($this->options[$field['id']]))
+                        if(!isset($defaults[$field['id']]))
                             $defaults[$field['id']] = $field['std'];
-                        else
-                            $defaults[$field['id']] = $this->options[$field['id']];
                     }
                 }
-             }
+            }
 
-             update_option($this->args['opt_name'], $defaults);
-             $this->options = get_option($this->args['opt_name']);
-         }
+            update_option($this->args['opt_name'], $defaults);
+            $this->options = get_option($this->args['opt_name']);
+        }
 
         /**
          * Class Options Page Function, creates main options page.
@@ -568,8 +565,8 @@ if(!class_exists('Redux_Options') ){
             echo '<form method="post" action="options.php" enctype="multipart/form-data" id="redux-opts-form-wrapper">';
             settings_fields($this->args['opt_name'] . '_group');
 
-            $this->options['last_tab'] = (isset($_GET['tab']) && !get_transient('redux-opts-saved')) ? $_GET['tab'] : $this->args['last_tab'];
-
+            $this->options['last_tab'] = (isset($_GET['tab']) && !get_transient('redux-opts-saved')) ? $_GET['tab'] : (isset($this->options['last_tab']) && get_transient('redux-opts-saved')) ? $this->options['last_tab'] : $this->args['last_tab'];
+            
             echo '<input type="hidden" id="last_tab" name="' . $this->args['opt_name'] . '[last_tab]" value="' . $this->options['last_tab'] . '" />';
 
             echo '<div id="redux-opts-header">';

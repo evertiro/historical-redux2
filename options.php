@@ -360,7 +360,7 @@ function setup_framework_options(){
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'switch' => true,
-                'std' => '1 '// 1 = checked | 0 = unchecked
+                'std' => '1' // 1 = checked | 0 = unchecked
             ),
             array(
                 'id' => '10',
@@ -369,7 +369,7 @@ function setup_framework_options(){
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'switch' => false,
-                'std' => '1 '// 1 = checked | 0 = unchecked
+                'std' => '1' // 1 = checked | 0 = unchecked
             ),
             array(
                 'id' => '11',

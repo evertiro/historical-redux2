@@ -57,6 +57,10 @@ if(!class_exists('Redux_Options') ){
             $defaults['help_tabs'] = array();
             $defaults['help_sidebar'] = __('', Redux_TEXT_DOMAIN);
 
+			// The defaults are set so it will preserve the old behavior.
+			$defaults['std_show'] = false; // If true, it shows the std value
+			$defaults['std_mark'] = ''; // What to print by the field's title if the value shown is std
+
             // Get args
             $this->args = wp_parse_args($args, $defaults);
             $this->args = apply_filters('redux-opts-args-'.$this->args['opt_name'], $this->args);
@@ -154,21 +158,11 @@ if(!class_exists('Redux_Options') ){
          *
          * @since Redux_Options 1.0.0
         */
-        function _set_default_options() {
-	    $defaults = get_option($this->args['opt_name']);
-
-	    foreach($this->sections as $k => $section) {
-                if(isset($section['fields'])) {
-                    foreach($section['fields'] as $fieldk => $field) {
-                        if(!isset($field['std'])){ $field['std'] = ''; }
-                        if(!isset($defaults[$field['id']]))
-                            $defaults[$field['id']] = $field['std'];
-                    }
-                }
-            }
-
-            update_option($this->args['opt_name'], $defaults);
-            $this->options = get_option($this->args['opt_name']);
+		function _set_default_options() {
+			if(!get_option($this->args['opt_name'])) {
+				add_option($this->args['opt_name'], $this->_default_values());
+			}
+			$this->options = get_option($this->args['opt_name']);
         }
 
         /**
@@ -316,7 +310,9 @@ if(!class_exists('Redux_Options') ){
                         if(isset($field['type'])) {
                             $field_class = 'Redux_Options_' . $field['type'];
 							if(!class_exists($field_class)) {
-								require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
+								$class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+								if($class_file)
+									require_once($class_file);
                             }
 
                             if(class_exists($field_class) && method_exists($field_class, 'enqueue')) {
@@ -420,8 +416,11 @@ if(!class_exists('Redux_Options') ){
             
                 if(isset($section['fields'])) {
                     foreach($section['fields'] as $fieldk => $field) {
-                        if(isset($field['title'])) {
-                            $th = (isset($field['sub_desc'])) ? $field['title'] . '<span class="description">' . $field['sub_desc'] . '</span>' : $field['title'];
+						if(isset($field['title'])) {
+							$std_mark = ( !isset($this->options[$field['id']]) && $this->args['std_show'] == true && isset($field['std']) ) ? $this->args['std_mark'] : '';
+							$th = $field['title'] . $std_mark;
+							if (isset($field['sub_desc']))
+								$th .= '<span class="description">' . $field['sub_desc'] . '</span>';
                         } else {
                             $th = '';
                         }
@@ -517,7 +516,9 @@ if(!class_exists('Redux_Options') ){
                             $validate = 'Redux_Validation_' . $field['validate'];
 
 							if(!class_exists($validate)) {
-								require_once($this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php');
+								$class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+								if($class_file)
+									require_once($class_file);
                             }
             
                             if(class_exists($validate)) {
@@ -832,11 +833,17 @@ if(!class_exists('Redux_Options') ){
                 $field_class = 'Redux_Options_'.$field['type'];
 
 				if(class_exists($field_class)) {
-					require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
+					$class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+					if($class_file)
+						require_once($class_file);
                 }
 
                 if(class_exists($field_class)) {
-                    $value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
+					if(!isset($this->options[$field['id']]) && $this->args['std_show'] == true && isset($field['std'])) {
+						$value = $field['std'];
+					} else {
+						$value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
+					}
                     do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                     $render = '';
                     $render = new $field_class($field, $value, $this);

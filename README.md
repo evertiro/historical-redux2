@@ -12,40 +12,67 @@ I develop Redux (and my other projects) because I enjoy them, and almost exclusi
 
 [![Donate to the framework](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Donate to the framework")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQJDSRRZVKRGU)
 
-## Simple Usage ##
+## Getting Redux ##
 
-Download Redux [here](https://github.com/ghost1227/Redux-Framework/archive/stable.zip) and unzip it in your theme. Rename the Redux directory to `admin/`.
+Redux can be downloaded in several ways which are outlined below. Please use whichever way you are most comfortable with.
+
+### Download as a .zip archive ###
+
+* Stable release: [download](https://github.com/ghost1227/Redux-Framework/archive/stable.zip) 
+* Dev release: [download](https://github.com/ghost1227/Redux-Framework/archive/master.zip)
+
+Once you have downloaded the framework, upload the .zip file to the root of your project and unzip it as follows:
 
 ```bash
-$ cd my-theme
-$ unzip ~/Downloads/Redux-Framework-master.zip -d admin
+$ cd my-project
+$ unzip Redux-Framework-master.zip -d admin
 ```
 
-Alternatively clone the repository using git:
+### Cloning the repository using git ###
 
+*Stable release*
 ```bash
-$ cd my-theme
+$ cd my-project
+$ git clone git://github.com/ghost1227/Redux-Framework/ -b stable admin
+```
+
+*Dev release*
+```bash
+$ cd my-project
 $ git clone git://github.com/ghost1227/Redux-Framework/ admin
 ```
 
-Or use:
+### Cloning the repository as a git submodule ###
 
+*Stable release*
 ```bash
-$ cd my-theme
+$ cd my-project
+$ git submodule add git://github.com/ghost1227/Redux-Framework/ -b stable admin
+```
+
+*Dev release*
+```bash
+$ cd my-project
 $ git submodule add git://github.com/ghost1227/Redux-Framework/ admin
 ```
 
-Next, copy `admin/defaults.php` to the base of your theme directory, so it won't get overwritten when you update Redux.
+## Setting up Redux ##
 
-Include the `defaults.php` file for use in your theme by adding this to your `functions.php`:
+Include Redux in your theme ```functions.php``` or plugin as follows:
 
 ```php
-get_template_part('theme', 'settings');
+require_once('admin/options.php');
 ```
 
-Finally change the settings as needed in `defaults.php`. The file is heavily documented, the rest of the [documention][docs] is a work in progress.
+Edit ```admin/options.php``` as needed. You may want to create a backup of your ```admin/options.php``` file as it will be overwritten during future updates.
 
-[docs]: http://plovs.github.com/Redux-Framework-Docs/index.html
+## FAQs ##
+
+1. Why should we use ```require_once` instead of ```get_template_part`?
+ * First, because ```get_template_part``` is for... you guessed it, themes! Redux is designed to work with both themes *and* plugins.
+ * Second, read [this](http://kovshenin.com/2013/get_template_part/).
+2. Why shouldn't we edit ```defaults.php```?
+ * Because ```defaults.php``` is for *defaults*. Anything that is defined in ```defaults.php``` can be overridden in ```options.php```.
 
 ## Features ##
 
@@ -63,6 +90,10 @@ Finally change the settings as needed in `defaults.php`. The file is heavily doc
 * Easily add page help through the class
 * Much more
 
+## Who's using Redux? ##
+
+* [WPTube 2](http://wptube.jrwebstudio.com/)
+
 ## Are you using Redux? ##
 
 Send me an email at ghost1227@reduxframework.com so I can add you to our user spotlight!
@@ -72,13 +103,16 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 ### Development Branch ###
 
 * Fixed SSL error which occurred occasionally with Google Webfonts 
-* Moved glyphicons to img/icons
-* Added optional flag for wpautop on editors
+* Moved glyphicons to ```img/icons```
+* Added optional flag for ```wpautop``` on editors
 * Added password field type
-* Added checkbox_hide_all option
+* Added ```checkbox_hide_all``` option
 * Added WP3.5 media chooser
 * Added Google webfonts previews
 * Updated to WP3.5 color picker
+* Minor style tweaks
+* Added graphical 'switch' option for checkboxes
+* Removed dependency on class extension for fields
 
 ### Version 1.0.0 (December 5, 2012) ###
 

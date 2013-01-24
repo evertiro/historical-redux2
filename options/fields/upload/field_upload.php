@@ -12,6 +12,7 @@ class Redux_Options_upload {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
+		$this->url = $parent->url;
     }
 
     /**

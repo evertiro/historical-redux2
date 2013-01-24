@@ -14,7 +14,6 @@ if(!class_exists('Redux_Options') ){
     }
 
     class Redux_Options {
-    
         protected $framework_url = 'http://www.reduxframework.com/';
         protected $framework_version = '1.0.0';
         
@@ -27,6 +26,7 @@ if(!class_exists('Redux_Options') ){
         public $errors = array();
         public $warnings = array();
         public $options = array();
+        public $options_defaults = null;  // cache for std values - null indicates to fill cache
 
         /**
          * Class Constructor. Defines the args for the theme options class
@@ -56,6 +56,10 @@ if(!class_exists('Redux_Options') ){
             $defaults['footer_credit'] = __('<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', Redux_TEXT_DOMAIN);
             $defaults['help_tabs'] = array();
             $defaults['help_sidebar'] = __('', Redux_TEXT_DOMAIN);
+
+            //The defaults are set so it will preserve the old behaviour.
+            $defaults['std_show'] = false;  // if true, shows the std value (if std is set)
+            $defaults['std_mark'] = ''; //mark to print by the field's title if the value is the std
 
             // Get args
             $this->args = wp_parse_args($args, $defaults);
@@ -90,13 +94,32 @@ if(!class_exists('Redux_Options') ){
         }    
 
         /**
+         * This is used to return the std value if std_show is set
+         *
+         * @since Redux_Options 1.0.1
+         * @param string $opt_name: option name to return
+         * @param mixed $default (null): value to return if std not set
+         */
+        function _get_std($opt_name, $default = null) {
+            if ( $this->args['std_show'] ) {
+                if ( is_null($this->options_defaults) ) 
+                    $this->_default_values(); // fill cache
+
+                $default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
+            }
+            return $default;
+        }
+
+
+        /**
          * ->get(); This is used to return and option value from the options array
          *
          * @since Redux_Options 1.0.0
-         * @param $array $args Arguments. Class constructor arguments.
-        */
+         * @param string $opt_name the name of the option being added
+         * @param mixed $default (null) the value of the option being read
+         */
         function get($opt_name, $default = null) {
-            return (!empty($this->options[$opt_name])) ? $this->options[$opt_name] : $default;
+            return ( !empty($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
         }
     
         /**
@@ -104,12 +127,14 @@ if(!class_exists('Redux_Options') ){
          *
          * @since Redux_Options 1.0.0
          * @param string $opt_name the name of the option being added
-         * @param mixed $value the value of the option being added
-        */
-        function set($opt_name = '', $value = '') {
+         * @param mixed $value (null) the value of the option being set
+         */
+        function set($opt_name = '', $value = null) {
             if($opt_name != '') {
-                $this->options[$opt_name] = $value;
-                update_option($this->args['opt_name'], $this->options);
+                if ( !$value == null ) {   // null values indicate fault, don't save
+                    $this->options[$opt_name] = $value;
+                    update_option($this->args['opt_name'], $this->options);
+                }
             }
         }
     
@@ -117,15 +142,14 @@ if(!class_exists('Redux_Options') ){
          * ->show(); This is used to echo and option value from the options array
          *
          * @since Redux_Options 1.0.0
-         * @param $array $args Arguments. Class constructor arguments.
-        */
-        function show($opt_name, $default = '') {
-            $option = $this->get($opt_name);
-            if(!is_array($option) && $option != '') {
+         * @param string $opt_name the name of the option to show
+         * @param mixed $default the default value to show if option not set
+         */
+        function show($opt_name, $default = null) {
+            $option = $this->get($opt_name, $default);  // get already handles std and default
+
+            if( !is_null($option) && !is_array($option) )
                 echo $option;
-            } elseif($default != '') {
-                echo $default;
-            }
         }
 
         /**
@@ -133,21 +157,22 @@ if(!class_exists('Redux_Options') ){
          *
          * @since Redux_Options 1.0.0
         */
-        function _default_values() {        
-            $defaults = array();
-        
-            foreach($this->sections as $k => $section) {
-                if(isset($section['fields'])) {
-                    foreach($section['fields'] as $fieldk => $field) {
-                        if(!isset($field['std'])){ $field['std'] = ''; }
-                        $defaults[$field['id']] = $field['std'];
+        function _default_values() {  
+            if ( !is_null($this->sections) && is_null($this->options_defaults) ) {
+                // fill the cache
+                foreach($this->sections as $section) {
+                    if(isset($section['fields'])) {
+                        foreach($section['fields'] as $field) {
+                            if( isset($field['std']) ) 
+                                $this->options_defaults[$field['id']] = $field['std'];
+                        }
                     }
                 }
             }
 
-            return $defaults;
+            return $this->options_defaults;
         }
-    	
+
     
         /**
          * Set default options on admin_init if option doesn't exist
@@ -155,19 +180,9 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _set_default_options() {
-	    $defaults = get_option($this->args['opt_name']);
-
-	    foreach($this->sections as $k => $section) {
-                if(isset($section['fields'])) {
-                    foreach($section['fields'] as $fieldk => $field) {
-                        if(!isset($field['std'])){ $field['std'] = ''; }
-                        if(!isset($defaults[$field['id']]))
-                            $defaults[$field['id']] = $field['std'];
-                    }
-                }
+            if(!get_option($this->args['opt_name'])) {
+                add_option($this->args['opt_name'], $this->_default_values());
             }
-
-            update_option($this->args['opt_name'], $defaults);
             $this->options = get_option($this->args['opt_name']);
         }
 
@@ -315,8 +330,10 @@ if(!class_exists('Redux_Options') ){
                     foreach($section['fields'] as $fieldk => $field) {
                         if(isset($field['type'])) {
                             $field_class = 'Redux_Options_' . $field['type'];
-							if(!class_exists($field_class)) {
-								require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
+                            if(!class_exists($field_class)) {
+                                $class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+                                if ( $class_file )
+                                    require_once($class_file);
                             }
 
                             if(class_exists($field_class) && method_exists($field_class, 'enqueue')) {
@@ -421,10 +438,13 @@ if(!class_exists('Redux_Options') ){
                 if(isset($section['fields'])) {
                     foreach($section['fields'] as $fieldk => $field) {
                         if(isset($field['title'])) {
-                            $th = (isset($field['sub_desc'])) ? $field['title'] . '<span class="description">' . $field['sub_desc'] . '</span>' : $field['title'];
+                            $std_mark = ( !isset($this->options[$field['id']]) && $this->args['std_show'] == true && isset($field['std']) ) ? $this->args['std_mark'] : '';
+                            $th = $field['title'] . $std_mark;
+                            if (isset($field['sub_desc']))
+                                $th .= '<span class="description">' . $field['sub_desc'] . '</span>';
                         } else {
                             $th = '';
-                        }
+                        }                        
                     
                         add_settings_field($fieldk . '_field', $th, array(&$this,'_field_input'), $this->args['opt_name'] . $k . '_section_group', $this->args['opt_name'] . $k . '_section', $field); // checkbox
                     }
@@ -516,8 +536,10 @@ if(!class_exists('Redux_Options') ){
                         if(isset($field['validate'])) {
                             $validate = 'Redux_Validation_' . $field['validate'];
 
-							if(!class_exists($validate)) {
-								require_once($this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php');
+                            if(!class_exists($validate)) {
+                                $class_file = apply_filters('redux-opts-validateclass-load', $this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php', $validate);
+                                if ( $class_file )
+                                    require_once($class_file);
                             }
             
                             if(class_exists($validate)) {
@@ -831,12 +853,14 @@ if(!class_exists('Redux_Options') ){
             if(isset($field['type'])) {
                 $field_class = 'Redux_Options_'.$field['type'];
 
-				if(class_exists($field_class)) {
-					require_once($this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php');
+                if(class_exists($field_class)) {
+                    $class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+                    if ( $class_file )
+                        require_once($class_file);
                 }
 
                 if(class_exists($field_class)) {
-                    $value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
+                    $value = $this->get($field['id'], '');
                     do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                     $render = '';
                     $render = new $field_class($field, $value, $this);

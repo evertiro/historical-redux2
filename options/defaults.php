@@ -538,7 +538,7 @@ if(!class_exists('Redux_Options') ){
                             $validate = 'Redux_Validation_' . $field['validate'];
 
 							if(!class_exists($validate)) {
-								$class_file = apply_filters('redux-opts-typeclass-load', $this->dir . 'fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class);
+								$class_file = apply_filters('redux-opts-validateclass-load', $this->dir . 'validation/' . $field['validate'] . '/validation_' . $field['validate'] . '.php', $validate);
 								if($class_file)
 									require_once($class_file);
                             }

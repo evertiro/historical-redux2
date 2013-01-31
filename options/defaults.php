@@ -544,7 +544,7 @@ if(!class_exists('Redux_Options') ){
                             }
             
                             if(class_exists($validate)) {
-                                $validation = new $validate($field, $plugin_options[$field['id']], $options[$field['id']]);
+                                $validation = new $validate($field, $plugin_options[$field['id']], isset($options[$field['id']])?$options[$field['id']]:null);
                                 $plugin_options[$field['id']] = $validation->value;
                                 if(isset($validation->error)) {
                                     $this->errors[] = $validation->error;

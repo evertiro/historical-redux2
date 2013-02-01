@@ -41,7 +41,7 @@ jQuery(document).ready(function(){
 
                     // Update value of the targetfield input with the attachment url.
                     jQuery('.redux-opts-screenshot',activeFileUploadContext).attr('src', attachment.attributes.url);
-                    jQuery('#' + relid ).val(attachment.attributes.url);
+                    jQuery('#' + relid ).val(attachment.attributes.url).trigger('change');
 
                     jQuery('.redux-opts-upload',activeFileUploadContext).hide();
                     jQuery('.redux-opts-screenshot',activeFileUploadContext).show();

@@ -1,10 +1,6 @@
-# Redux Options Framework v1.0.1 #
+# Redux Options Framework v2.0.0 #
 
 Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
-
-## Want to see a feature added to the 2.0.0 stable release? ##
-
-Let me know now! Better yet, add it yourself and send a pull request! The 2.0.0 stable release will be out as soon as I convert everything to Font Awesome!
 
 ## Donate to the Framework ##
 
@@ -102,8 +98,11 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Development Branch ###
 
+* Nothing yet...
+
+### Version 2.0.0 (January 31, 2013) ###
+
 * Fixed SSL error which occurred occasionally with Google Webfonts 
-* Moved glyphicons to ```img/icons```
 * Added optional flag for ```wpautop``` on editors
 * Added password field type
 * Added ```checkbox_hide_all``` option
@@ -113,6 +112,7 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 * Minor style tweaks
 * Added graphical 'switch' option for checkboxes
 * Removed dependency on class extension for fields
+* Deprecated icons in favor of iconfonts
 
 ### Version 1.0.0 (December 5, 2012) ###
 

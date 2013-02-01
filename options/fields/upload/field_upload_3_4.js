@@ -42,7 +42,7 @@ jQuery(document).ready(function () {
     window.send_to_editor = function (html) {
         if (header_clicked) {
             imgurl = jQuery('img', html).attr('src');
-            jQuery('#' + formfield).val(imgurl);
+            jQuery('#' + formfield).val(imgurl).trigger('change');
             jQuery('#' + formfield).next().fadeIn('slow');
             jQuery('#' + formfield).next().next().fadeOut('slow');
             jQuery('#' + formfield).next().next().next().fadeIn('slow');

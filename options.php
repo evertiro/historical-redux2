@@ -229,7 +229,7 @@ function setup_framework_options(){
                 //'std' => '', // This is the default value and is used to set an option on theme activation.
                 //'class' => '' // Set custom classes for elements if you want to do something a little different
                 //'rows' => '6' // Set the number of rows shown for the textarea. Default: 6
-            ),
+			),
             array(
                 'id' => '2',
                 'type' => 'text',

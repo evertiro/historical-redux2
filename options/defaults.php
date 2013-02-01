@@ -95,32 +95,32 @@ if(!class_exists('Redux_Options') ){
             $this->options = get_option($this->args['opt_name']);
         }    
 
-        /**
-         * ->_get_std(); This is used to return the std value if std_show is set
-         *
-         * @since Redux_Options 1.0.1
-         * @param string $opt_name: option name to return
-         * @param mixed $default (null): value to return if std not set
-        */
-        function _get_std($opt_name, $default = null) {
-            if($this->args['std_show'] == true) {
-                if(is_null($this->options_defaults))
-                    $this->_default_values(); // fill cache
-                default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
-            }
-            return $default;
+    /**
+     * ->_get_std(); This is used to return the std value if std_show is set
+     *
+     * @since Redux_Options 1.0.1
+     * @param string $opt_name: option name to return
+     * @param mixed $default (null): value to return if std not set
+    */
+    function _get_std($opt_name, $default = null) {
+        if($this->args['std_show'] == true) {
+            if(is_null($this->options_defaults))
+                $this->_default_values(); // fill cache
+            default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
         }
+        return $default;
+    }
 
-        /**
-         * ->get(); This is used to return and option value from the options array
-         *
-         * @since Redux_Options 1.0.0
-         * @param string $opt_name: option name to return
-         * @param mixed $default (null): value to return if option not set
-        */
-        function get($opt_name, $default = null) {
-	    return ( isset($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
-        }
+    /**
+     * ->get(); This is used to return and option value from the options array
+     *
+     * @since Redux_Options 1.0.0
+     * @param string $opt_name: option name to return
+     * @param mixed $default (null): value to return if option not set
+    */
+    function get($opt_name, $default = null) {
+        return ( isset($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
+    }
     
         /**
          * ->set(); This is used to set an arbitrary option in the options array

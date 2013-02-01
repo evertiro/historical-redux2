@@ -104,7 +104,7 @@ if(!class_exists('Redux_Options') ){
 		*/
 		function _get_std($opt_name, $default = null) {
 			if($this->args['std_show'] == true) {
-				if(isset($_GET['settings-updated']) || $_GET['settings-updated'] == 'true' || get_transient('redux-opts-saved') == '1')
+				if(isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true' || get_transient('redux-opts-saved') == '1')
 					return;
 				if(is_null($this->options_defaults))
 					$this->_default_values(); // fill cache

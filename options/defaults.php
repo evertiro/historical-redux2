@@ -57,6 +57,7 @@ if(!class_exists('Redux_Options') ){
             $defaults['footer_credit'] = __('<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', Redux_TEXT_DOMAIN);
             $defaults['help_tabs'] = array();
             $defaults['help_sidebar'] = __('', Redux_TEXT_DOMAIN);
+            $defaults['icon_type'] = 'iconfont';
 
 			// The defaults are set so it will preserve the old behavior.
 			$defaults['std_show'] = false; // If true, it shows the std value

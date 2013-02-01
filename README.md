@@ -98,7 +98,8 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Development Branch ###
 
-* Nothing yet...
+* Added raw HTML field type
+* Added sortable text field type
 
 ### Version 2.0.0 (January 31, 2013) ###
 

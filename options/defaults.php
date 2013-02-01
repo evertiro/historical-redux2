@@ -888,7 +888,7 @@ if(!class_exists('Redux_Options') ){
         */
         function _field_input($field) {
             if(isset($field['callback']) && function_exists($field['callback'])) {
-                $value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
+                $value = $this->get($field['id'], '');
                 do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                 call_user_func($field['callback'], $field, $value);
                 do_action('redux-opts-after-field-' . $this->args['opt_name'], $field, $value);

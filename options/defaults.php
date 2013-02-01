@@ -16,7 +16,7 @@ if(!class_exists('Redux_Options') ){
     class Redux_Options {
     
         protected $framework_url = 'http://www.reduxframework.com/';
-        protected $framework_version = '1.0.0';
+        protected $framework_version = '2.0.0';
         
         public $dir = Redux_OPTIONS_DIR;
         public $url = Redux_OPTIONS_URL;

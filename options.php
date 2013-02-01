@@ -320,7 +320,19 @@ function setup_framework_options(){
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'validate_callback' => 'validate_callback_function',
                 'std' => '0'
-            ),
+			),
+			array(
+	            'id' => 'sortable_text',
+    	        'type' => 'text_sortable',
+        	    'title' => __('Sortable Text Option', Redux_TEXT_DOMAIN),
+            	'sub_desc' => __('Define and reorder these however you want.', Redux_TEXT_DOMAIN),
+				'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
+	            'options' => array(
+    	            'si1' => 'Item 1',
+        	        'si2' => 'Item 2',
+            	    'si3' => 'Item 3',
+        	    )
+	        ),
             array(
                 'id' => '5',
                 'type' => 'textarea',

@@ -693,7 +693,12 @@ function setup_framework_options(){
                 'title' => __('Text Field', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('Additional Info', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
-            )                
+			),
+			array(
+				'id' => 'raw_html',
+				'type' => 'raw_html',
+				'html' => '<h4>This is the raw HTML field. It accepts all HTML.</h4><p style="text-align: center;">Some centered text...</p><p style="text-align: right;">...and some right aligned text...</p><p>..and a linked image!</p><a href="http://www.wordpress.org" target="_blank"><img src="http://s.wordpress.org/about/images/logos/wordpress-logo-stacked-rgb.png" style="width: 100px;" /></a>'
+			)
         )
     );
                 

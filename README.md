@@ -98,7 +98,9 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Development Branch ###
 
-* Nothing yet...
+* Added Font Awesome intro
+* Added ```raw_html``` option
+* Added ```text_sortable``` option
 
 ### Version 2.0.0 (January 31, 2013) ###
 

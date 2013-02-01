@@ -759,26 +759,6 @@
   margin-left: 2px;
 }
 
-/*
- *
- * Redux_Options_text_sortable
- *
- */
-.redux-opts-group-tab .form-table .text_sortable {
-	clear: both;
-}
-.redux-opts-group-tab .form-table .text_sortable label {
-	float: left;
-	display: block;
-	width: 100px;
-}
-.redux-opts-group-tab .form-table .text_sortable input {
-	width: 200px;
-}
-.redux-opts-group-tab .form-table .text_sortable .drag {
-	margin-left: 1em;
-}
-
 /* Fix datepicker empty div at bottom of the page */
 #ui-datepicker-div { 
 	display: none;

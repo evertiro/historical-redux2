@@ -31,9 +31,8 @@ function add_another_section($sections){
     $sections[] = array(
         'title' => __('A Section added by hook', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', Redux_TEXT_DOMAIN),
-        // Redux ships with the glyphicons free icon pack, included in the options folder.
-        // Feel free to use them, add your own icons, or leave this blank for the default.
-        'icon' => trailingslashit(get_template_directory_uri()) . 'options/img/icons/glyphicons_062_attach.png',
+		'icon' => 'paper-clip',
+		'icon_class' => 'icon-large',
         // Leave this as a blank section, no options just some intro text set above.
         'fields' => array()
     );
@@ -71,6 +70,17 @@ function setup_framework_options(){
     // Default: true
     //$args['dev_mode'] = true;
 
+	// Set the icon for the dev mode tab.
+	// If $args['icon_type'] = 'image', this should be the path to the icon.
+	// If $args['icon_type'] = 'iconfont', this should be the icon name.
+	// Default: info-sign
+	//$args['dev_mode_icon'] = 'info-sign';
+
+	// Set the class for the dev mode tab icon.
+	// This is ignored unless $args['icon_type'] = 'iconfont'
+	// Default: null
+	$args['dev_mode_icon_class'] = 'icon-large';
+
     // If you want to use Google Webfonts, you MUST define the api key.
     //$args['google_api_key'] = 'xxxx';
 
@@ -97,24 +107,33 @@ function setup_framework_options(){
     $args['share_icons']['twitter'] = array(
         'link' => 'http://twitter.com/ghost1227',
         'title' => 'Follow me on Twitter', 
-        'img' => Redux_OPTIONS_URL . 'img/icons/glyphicons_322_twitter.png'
+        'img' => Redux_OPTIONS_URL . 'img/social/Twitter.png'
     );
     $args['share_icons']['linked_in'] = array(
         'link' => 'http://www.linkedin.com/profile/view?id=52559281',
         'title' => 'Find me on LinkedIn', 
-        'img' => Redux_OPTIONS_URL . 'img/icons/glyphicons_337_linked_in.png'
+        'img' => Redux_OPTIONS_URL . 'img/social/LinkedIn.png'
     );
 
     // Enable the import/export feature.
     // Default: true
     //$args['show_import_export'] = false;
 
+	// Set the icon for the import/export tab.
+	// If $args['icon_type'] = 'image', this should be the path to the icon.
+	// If $args['icon_type'] = 'iconfont', this should be the icon name.
+	// Default: refresh
+	//$args['import_icon'] = 'refresh';
+
+	// Set the class for the import/export tab icon.
+	// This is ignored unless $args['icon_type'] = 'iconfont'
+	// Default: null
+	$args['import_icon_class'] = 'icon-large';
+
     // Set a custom option name. Don't forget to replace spaces with underscores!
     $args['opt_name'] = 'twenty_eleven2';
 
     // Set a custom menu icon.
-    // Redux ships with the glyphicons free icon pack, included in the options folder.
-    // Feel free to use them, add your own icons, or leave this blank for the default.
     //$args['menu_icon'] = '';
 
     // Set a custom title for the options page.
@@ -150,6 +169,11 @@ function setup_framework_options(){
     // Set a custom page icon class (used to override the page icon next to heading)
     //$args['page_icon'] = 'icon-themes';
 
+	// Set the icon type. Set to "iconfont" for Font Awesome, or "image" for traditional.
+	// Redux no longer ships with standard icons!
+	// Default: iconfont
+	//$args['icon_type'] = 'image';
+
     // Disable the panel sections showing as submenu items.
     // Default: true
     //$args['allow_sub_menu'] = false;
@@ -172,17 +196,22 @@ function setup_framework_options(){
     $sections = array();
 
     $sections[] = array(
+		// Redux uses the Font Awesome iconfont to supply its default icons.
+		// If $args['icon_type'] = 'iconfont', this should be the icon name minus 'icon-'.
+		// If $args['icon_type'] = 'image', this should be the path to the icon.
+		'icon' => 'paper-clip',
+		// Set the class for this icon.
+		// This field is ignored unless $args['icon_type'] = 'iconfont'
+		'icon_class' => 'icon-large',
         'title' => __('Getting Started', Redux_TEXT_DOMAIN),
-        'desc' => __('<p class="description">This is the description field for this section. HTML is allowed</p>', Redux_TEXT_DOMAIN),
-        // Redux ships with the glyphicons free icon pack, included in the options folder.
-        // Feel free to use them, add your own icons, or leave this blank for the default.
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_062_attach.png'
+		'desc' => __('<p class="description">This is the description field for this section. HTML is allowed</p>', Redux_TEXT_DOMAIN),
         // Lets leave this as a blank section, no options just some intro text set above.
         //'fields' => array()
     );
 
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_107_text_resize.png',
+		'icon' => 'edit',
+		'icon_class' => 'icon-large',
         'title' => __('Text Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the description field for this section. Again HTML is allowed2</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -349,7 +378,8 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_150_check.png',
+		'icon' => 'check',
+		'icon_class' => 'icon-large',
         'title' => __('Radio/Checkbox Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -420,7 +450,8 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_157_show_lines.png',
+		'icon' => 'list-alt',
+		'icon_class' => 'icon-large',
         'title' => __('Select Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -446,7 +477,8 @@ function setup_framework_options(){
     );
     
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_023_cogwheels.png',
+		'icon' => 'cogs',
+		'icon_class' => 'icon-large',
         'title' => __('Custom Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -615,7 +647,8 @@ function setup_framework_options(){
     );
 
     $sections[] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_093_crop.png',
+		'icon' => 'eye-open',
+		'icon_class' => 'icon-large',
         'title' => __('Non Value Fields', Redux_TEXT_DOMAIN),
         'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', Redux_TEXT_DOMAIN),
         'fields' => array(
@@ -681,14 +714,16 @@ function setup_framework_options(){
     $item_info .= '</div>';
 
     $tabs['item_info'] = array(
-        'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_195_circle_info.png',
+		'icon' => 'info-sign',
+		'icon_class' => 'icon-large',
         'title' => __('Theme Information', Redux_TEXT_DOMAIN),
         'content' => $item_info
     );
     
     if(file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
         $tabs['docs'] = array(
-            'icon' => Redux_OPTIONS_URL . 'img/icons/glyphicons_071_book.png',
+			'icon' => 'book',
+			'icon_class' => 'icon-large',
             'title' => __('Documentation', Redux_TEXT_DOMAIN),
             'content' => nl2br(file_get_contents(trailingslashit(dirname(__FILE__)) . 'README.html'))
         );

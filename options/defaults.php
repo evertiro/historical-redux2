@@ -291,9 +291,27 @@ if(!class_exists('Redux_Options') ){
                 array('farbtastic'),
                 time(),
                 'all'
-            );
+			);
+
+			$wp_styles->add_data( 'redux-lte-ie8', 'conditional', 'lte IE 8' );
+
+			wp_register_style(
+				'redux-font-awesome',
+				$this->url . 'css/font-awesome.min.css',
+				array(),
+				time(),
+				'all'
+			);
+
+			wp_register_style(
+				'redux-font-awesome-ie7',
+				$this->url . 'css/font-awesome-ie7.min.css',
+				array(),
+				time(),
+				'all'
+			);
 			
-            $wp_styles->add_data( 'redux-lte-ie8', 'conditional', 'lte IE 8' );
+            $wp_styles->add_data( 'redux-font-awesome-ie7', 'conditional', 'lte IE 7' );
             
             wp_register_style(
                 'redux-opts-jquery-ui-css',
@@ -310,6 +328,9 @@ if(!class_exists('Redux_Options') ){
             } elseif($this->args['admin_stylesheet'] == 'custom') {
                 wp_enqueue_style('redux-opts-custom-css');
             }
+
+			wp_enqueue_style('redux-font-awesome');
+			wp_enqueue_style('redux-font-awesome-ie7');
 
             wp_enqueue_script(
                 'redux-opts-js', 
@@ -617,7 +638,12 @@ if(!class_exists('Redux_Options') ){
             echo '<div id="redux-opts-sidebar">';
             echo '<ul id="redux-opts-group-menu">';
             foreach($this->sections as $k => $section) {
-                $icon = (!isset($section['icon'])) ? '<img src="' . $this->url . 'img/icons/glyphicons_019_cogwheel.png" /> ' : '<img src="' . $section['icon'] . '" /> ';
+				if($this->args['icon_type'] == 'image') {
+					$icon = (!isset($section['icon'])) ? '' : '<img src="' . $section['icon'] . '" /> ';
+				} else {
+					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
+					$icon = (!isset($section['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $section['icon'] . $icon_class . '"></i> ';
+				}
                 echo '<li id="' . $k . '_section_group_li" class="redux-opts-group-tab-link-li">';
                 echo '<a href="javascript:void(0);" id="' . $k . '_section_group_li_a" class="redux-opts-group-tab-link-a" data-rel="' . $k . '">' . $icon . '<span>' . $section['title'] . '</span></a>';
                 echo '</li>';
@@ -628,16 +654,27 @@ if(!class_exists('Redux_Options') ){
             do_action('redux-opts-after-section-menu-items-' . $this->args['opt_name'], $this);
 
             if(true === $this->args['show_import_export']) {
-                echo '<li id="import_export_default_section_group_li" class="redux-opts-group-tab-link-li">';
-                echo '<a href="javascript:void(0);" id="import_export_default_section_group_li_a" class="redux-opts-group-tab-link-a" data-rel="import_export_default"><img src="' . $this->url . 'img/icons/glyphicons_082_roundabout.png" /> <span>' . __('Import / Export', Redux_TEXT_DOMAIN) . '</span></a>';
+				echo '<li id="import_export_default_section_group_li" class="redux-opts-group-tab-link-li">';
+				if($this->args['icon_type'] == 'image') {
+					$icon = (!isset($this->args['import_icon'])) ? '' : '<img src="' . $this->args['import_icon'] . '" /> ';
+				} else {
+					$icon_class = (!isset($this->args['import_icon_class'])) ? '' : ' ' . $this->args['import_icon_class'];
+					$icon = (!isset($this->args['import_icon'])) ? '<i class="icon-refresh' . $icon_class . '"></i>' : '<i class="icon-' . $this->args['import_icon'] . $icon_class . '"></i> ';
+				}
+                echo '<a href="javascript:void(0);" id="import_export_default_section_group_li_a" class="redux-opts-group-tab-link-a" data-rel="import_export_default">' . $icon . ' <span>' . __('Import / Export', Redux_TEXT_DOMAIN) . '</span></a>';
                 echo '</li>';
 
                 echo '<li class="divide">&nbsp;</li>';
             }
 
             if(is_array($this->extra_tabs)) {
-                foreach($this->extra_tabs as $k => $tab) {
-                    $icon = (!isset($tab['icon'])) ? '<img src="' . $this->url . 'img/icons/glyphicons_019_cogwheel.png" /> ' : '<img src="' . $tab['icon'] . '" /> ';
+				foreach($this->extra_tabs as $k => $tab) {
+					if($this->args['icon_type'] == 'image') {
+						$icon = (!isset($tab['icon'])) ? '' : '<img src="' . $tab['icon'] . '" /> ';
+					} else {
+						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
+    	                $icon = (!isset($tab['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $tab['icon'] . $icon_class . '"></i> ';
+					}
                     echo '<li id="' . $k . '_section_group_li" class="redux-opts-group-tab-link-li">';
                     echo '<a href="javascript:void(0);" id="' . $k . '_section_group_li_a" class="redux-opts-group-tab-link-a custom-tab" data-rel="' . $k . '">' . $icon . '<span>' . $tab['title'] . '</span></a>';
                     echo '</li>';
@@ -645,8 +682,14 @@ if(!class_exists('Redux_Options') ){
             }
 
             if(true === $this->args['dev_mode']) {
-                echo '<li id="dev_mode_default_section_group_li" class="redux-opts-group-tab-link-li">';
-                echo '<a href="javascript:void(0);" id="dev_mode_default_section_group_li_a" class="redux-opts-group-tab-link-a custom-tab" data-rel="dev_mode_default"><img src="' . $this->url . 'img/icons/glyphicons_195_circle_info.png" /> <span>' . __('Dev Mode Info', Redux_TEXT_DOMAIN) . '</span></a>';
+				echo '<li id="dev_mode_default_section_group_li" class="redux-opts-group-tab-link-li">';
+				if($this->args['icon_type'] == 'image') {
+					$icon = (!isset($this->args['dev_mode_icon'])) ? '' : '<img src="' . $this->args['dev_mode_icon'] . '" /> ';
+				} else {
+					$icon_class = (!isset($this->args['dev_mode_icon_class'])) ? '' : ' ' . $this->args['dev_mode_icon_class'];
+					$icon = (!isset($this->args['dev_mode_icon'])) ? '<i class="icon-info-sign' . $icon_class . '"></i>' : '<i class="icon-' . $this->args['dev_mode_icon'] . $icon_class . '"></i> ';
+				}
+                echo '<a href="javascript:void(0);" id="dev_mode_default_section_group_li_a" class="redux-opts-group-tab-link-a custom-tab" data-rel="dev_mode_default">' . $icon . ' <span>' . __('Dev Mode Info', Redux_TEXT_DOMAIN) . '</span></a>';
                 echo '</li>';
             }
 

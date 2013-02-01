@@ -321,6 +321,10 @@
 	border-width: 0px;
 }
 
+[class^="icon-"], [class*=" icon-"] {
+	color: #333333;
+}
+
 /*
  *
  * Redux_Options_radio_img

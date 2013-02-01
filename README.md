@@ -103,7 +103,6 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 ### Development Branch ###
 
 * Fixed SSL error which occurred occasionally with Google Webfonts 
-* Moved glyphicons to ```img/icons```
 * Added optional flag for ```wpautop``` on editors
 * Added password field type
 * Added ```checkbox_hide_all``` option
@@ -113,6 +112,7 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 * Minor style tweaks
 * Added graphical 'switch' option for checkboxes
 * Removed dependency on class extension for fields
+* Deprecated icons in favor of iconfonts
 
 ### Version 1.0.0 (December 5, 2012) ###
 

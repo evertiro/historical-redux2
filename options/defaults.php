@@ -104,8 +104,6 @@ if(!class_exists('Redux_Options') ){
 		*/
 		function _get_std($opt_name, $default = null) {
 			if($this->args['std_show'] == true) {
-				if(isset($_GET['settings-updated']) || $_GET['settings-updated'] == 'true' || get_transient('redux-opts-saved') == '1')
-					return;
 				if(is_null($this->options_defaults))
 					$this->_default_values(); // fill cache
 				$default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
@@ -121,7 +119,7 @@ if(!class_exists('Redux_Options') ){
 		 * @param mixed $default (null): value to return if option not set
         */
 		function get($opt_name, $default = null) {
-			return ( !empty($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
+			return ( isset($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
         }
     
         /**
@@ -568,7 +566,7 @@ if(!class_exists('Redux_Options') ){
                             }
             
                             if(class_exists($validate)) {
-                                $validation = new $validate($field, $plugin_options[$field['id']], $options[$field['id']]);
+                                $validation = new $validate($field, $plugin_options[$field['id']], $this->get($field['id'], ''));
                                 $plugin_options[$field['id']] = $validation->value;
                                 if(isset($validation->error)) {
                                     $this->errors[] = $validation->error;
@@ -581,7 +579,7 @@ if(!class_exists('Redux_Options') ){
                         }
 
                         if(isset($field['validate_callback']) && function_exists($field['validate_callback'])) {
-                            $callbackvalues = call_user_func($field['validate_callback'], $field, $plugin_options[$field['id']], $options[$field['id']]);
+                            $callbackvalues = call_user_func($field['validate_callback'], $field, $plugin_options[$field['id']], $this->get($field['id'], ''));
                             $plugin_options[$field['id']] = $callbackvalues['value'];
                             if(isset($callbackvalues['error'])) {
                                 $this->errors[] = $callbackvalues['error'];
@@ -889,8 +887,8 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _field_input($field) {
-            if(isset($field['callback']) && function_exists($field['callback'])) {
-                $value = (isset($this->options[$field['id']])) ? $this->options[$field['id']] : '';
+			if(isset($field['callback']) && function_exists($field['callback'])) {
+				$value = $this->get($field['id'], '');
                 do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                 call_user_func($field['callback'], $field, $value);
                 do_action('redux-opts-after-field-' . $this->args['opt_name'], $field, $value);

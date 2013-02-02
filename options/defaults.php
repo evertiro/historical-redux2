@@ -639,7 +639,7 @@ if(!class_exists('Redux_Options') ){
             echo '<div id="redux-opts-sidebar">';
             echo '<ul id="redux-opts-group-menu">';
             foreach($this->sections as $k => $section) {
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['icon_type'] == 'image' || (isset($section['icon_type']) && $section['icon_type'] == 'image')) {
 					$icon = (!isset($section['icon'])) ? '' : '<img src="' . $section['icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
@@ -656,7 +656,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['show_import_export']) {
 				echo '<li id="import_export_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['import_icon_type'] == 'image') {
 					$icon = (!isset($this->args['import_icon'])) ? '' : '<img src="' . $this->args['import_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['import_icon_class'])) ? '' : ' ' . $this->args['import_icon_class'];
@@ -670,7 +670,7 @@ if(!class_exists('Redux_Options') ){
 
             if(is_array($this->extra_tabs)) {
 				foreach($this->extra_tabs as $k => $tab) {
-					if($this->args['icon_type'] == 'image') {
+					if($this->args['icon_type'] == 'image' || (isset($tab['icon_type']) && $tab['icon_type'] == 'image')) {
 						$icon = (!isset($tab['icon'])) ? '' : '<img src="' . $tab['icon'] . '" /> ';
 					} else {
 						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
@@ -684,7 +684,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['dev_mode']) {
 				echo '<li id="dev_mode_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['dev_mode_icon_type'] == 'image') {
 					$icon = (!isset($this->args['dev_mode_icon'])) ? '' : '<img src="' . $this->args['dev_mode_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['dev_mode_icon_class'])) ? '' : ' ' . $this->args['dev_mode_icon_class'];

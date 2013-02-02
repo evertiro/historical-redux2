@@ -13,7 +13,7 @@ define('Redux_TEXT_DOMAIN', 'redux-opts');
  *
  */
 //define('Redux_OPTIONS_URL', site_url('path the options folder'));
-if(!class_exists('Redux_Options')){
+if(!class_exists('Redux_Options')) {
     require_once(dirname(__FILE__) . '/options/defaults.php');
 }
 
@@ -26,7 +26,7 @@ if(!class_exists('Redux_Options')){
  * so you must use get_template_directory_uri() if you want to use any of the built in icons
  *
  */
-function add_another_section($sections){
+function add_another_section($sections) {
     //$sections = array();
     $sections[] = array(
         'title' => __('A Section added by hook', Redux_TEXT_DOMAIN),
@@ -47,7 +47,7 @@ function add_another_section($sections){
  * Custom function for filtering the args array given by a theme, good for child themes to override or add to the args array.
  *
  */
-function change_framework_args($args){
+function change_framework_args($args) {
     //$args['dev_mode'] = false;
     
     return $args;
@@ -63,7 +63,7 @@ function change_framework_args($args){
  * No $args are required, but they can be over ridden if needed.
  *
  */
-function setup_framework_options(){
+function setup_framework_options() {
     $args = array();
 
     // Setting dev mode to true allows you to view the class settings/info in the panel.
@@ -173,6 +173,8 @@ function setup_framework_options(){
 	// Redux no longer ships with standard icons!
 	// Default: iconfont
 	//$args['icon_type'] = 'image';
+	//$args['dev_mode_icon_type'] = 'image';
+	//$args['import_icon_type'] == 'image';
 
     // Disable the panel sections showing as submenu items.
     // Default: true
@@ -199,7 +201,9 @@ function setup_framework_options(){
 		// Redux uses the Font Awesome iconfont to supply its default icons.
 		// If $args['icon_type'] = 'iconfont', this should be the icon name minus 'icon-'.
 		// If $args['icon_type'] = 'image', this should be the path to the icon.
-		'icon' => 'paper-clip',
+		// Icons can also be overridden on a section-by-section basis by defining 'icon_type' => 'image'
+		'icon_type' => 'image',
+		'icon' => Redux_OPTIONS_URL . 'img/home.png',
 		// Set the class for this icon.
 		// This field is ignored unless $args['icon_type'] = 'iconfont'
 		'icon_class' => 'icon-large',

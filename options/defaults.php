@@ -49,7 +49,8 @@ if(!class_exists('Redux_Options') ){
             $defaults['page_cap'] = 'manage_options';
             $defaults['page_type'] = 'menu';
             $defaults['page_parent'] = 'themes.php';
-            $defaults['page_position'] = null;
+			$defaults['page_position'] = null;
+			$defaults['icon_type'] = 'iconfont';
             $defaults['allow_sub_menu'] = true;
             $defaults['show_import_export'] = true;
             $defaults['dev_mode'] = true;

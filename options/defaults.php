@@ -641,6 +641,9 @@ if(!class_exists('Redux_Options') ){
             foreach($this->sections as $k => $section) {
 				if($this->args['icon_type'] == 'image' || (isset($section['icon_type']) && $section['icon_type'] == 'image')) {
 					$icon = (!isset($section['icon'])) ? '' : '<img src="' . $section['icon'] . '" /> ';
+				} elseif(isset($section['icon_type']) && $section['icon_type'] == 'iconfont') {
+					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
+					$icon = (!isset($section['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $section['icon'] . $icon_class . '"></i> ';
 				} else {
 					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
 					$icon = (!isset($section['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $section['icon'] . $icon_class . '"></i> ';
@@ -672,6 +675,9 @@ if(!class_exists('Redux_Options') ){
 				foreach($this->extra_tabs as $k => $tab) {
 					if($this->args['icon_type'] == 'image' || (isset($tab['icon_type']) && $tab['icon_type'] == 'image')) {
 						$icon = (!isset($tab['icon'])) ? '' : '<img src="' . $tab['icon'] . '" /> ';
+					} elseif(isset($tab['icon_type']) && $tab['icon_type'] == 'iconfont') {
+						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
+    	                $icon = (!isset($tab['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $tab['icon'] . $icon_class . '"></i> ';
 					} else {
 						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
     	                $icon = (!isset($tab['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $tab['icon'] . $icon_class . '"></i> ';

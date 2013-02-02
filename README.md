@@ -98,7 +98,7 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Development Branch ###
 
-* Added option to override icon_type per icon
+* Added option to override ```icon_type``` per icon
 * Minor bug/versioning fixes
 * Added Font Awesome intro
 * Added ```raw_html``` option

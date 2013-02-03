@@ -16,7 +16,7 @@ if(!class_exists('Redux_Options') ){
     class Redux_Options {
     
         protected $framework_url = 'http://www.reduxframework.com/';
-        protected $framework_version = '1.0.0';
+        protected $framework_version = '2.0.0';
         
         public $dir = Redux_OPTIONS_DIR;
         public $url = Redux_OPTIONS_URL;
@@ -49,7 +49,8 @@ if(!class_exists('Redux_Options') ){
             $defaults['page_cap'] = 'manage_options';
             $defaults['page_type'] = 'menu';
             $defaults['page_parent'] = 'themes.php';
-            $defaults['page_position'] = null;
+			$defaults['page_position'] = null;
+			$defaults['icon_type'] = 'iconfont';
             $defaults['allow_sub_menu'] = true;
             $defaults['show_import_export'] = true;
             $defaults['dev_mode'] = true;
@@ -57,7 +58,6 @@ if(!class_exists('Redux_Options') ){
             $defaults['footer_credit'] = __('<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', Redux_TEXT_DOMAIN);
             $defaults['help_tabs'] = array();
             $defaults['help_sidebar'] = __('', Redux_TEXT_DOMAIN);
-            $defaults['icon_type'] = 'iconfont';
 
 			// The defaults are set so it will preserve the old behavior.
 			$defaults['std_show'] = false; // If true, it shows the std value
@@ -95,32 +95,32 @@ if(!class_exists('Redux_Options') ){
             $this->options = get_option($this->args['opt_name']);
         }    
 
-    /**
-     * ->_get_std(); This is used to return the std value if std_show is set
-     *
-     * @since Redux_Options 1.0.1
-     * @param string $opt_name: option name to return
-     * @param mixed $default (null): value to return if std not set
-    */
-    function _get_std($opt_name, $default = null) {
-        if($this->args['std_show'] == true) {
-            if(is_null($this->options_defaults))
-                $this->_default_values(); // fill cache
-            default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
-        }
-        return $default;
-    }
+		/**
+		 * ->_get_std(); This is used to return the std value if std_show is set
+		 *
+		 * @since Redux_Options 1.0.1
+		 * @param string $opt_name: option name to return
+		 * @param mixed $default (null): value to return if std not set
+		*/
+		function _get_std($opt_name, $default = null) {
+			if($this->args['std_show'] == true) {
+				if(is_null($this->options_defaults))
+					$this->_default_values(); // fill cache
+				$default = array_key_exists($opt_name, $this->options_defaults) ? $this->options_defaults[$opt_name] : $default;
+			}
+			return $default;
+		}
 
-    /**
-     * ->get(); This is used to return and option value from the options array
-     *
-     * @since Redux_Options 1.0.0
-     * @param string $opt_name: option name to return
-     * @param mixed $default (null): value to return if option not set
-    */
-    function get($opt_name, $default = null) {
-        return ( isset($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
-    }
+        /**
+         * ->get(); This is used to return and option value from the options array
+         *
+		 * @since Redux_Options 1.0.0
+		 * @param string $opt_name: option name to return
+		 * @param mixed $default (null): value to return if option not set
+        */
+		function get($opt_name, $default = null) {
+			return ( isset($this->options[$opt_name]) ) ? $this->options[$opt_name] : $this->_get_std($opt_name, $default);
+        }
     
         /**
          * ->set(); This is used to set an arbitrary option in the options array
@@ -639,8 +639,11 @@ if(!class_exists('Redux_Options') ){
             echo '<div id="redux-opts-sidebar">';
             echo '<ul id="redux-opts-group-menu">';
             foreach($this->sections as $k => $section) {
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['icon_type'] == 'image' || (isset($section['icon_type']) && $section['icon_type'] == 'image')) {
 					$icon = (!isset($section['icon'])) ? '' : '<img src="' . $section['icon'] . '" /> ';
+				} elseif(isset($section['icon_type']) && $section['icon_type'] == 'iconfont') {
+					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
+					$icon = (!isset($section['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $section['icon'] . $icon_class . '"></i> ';
 				} else {
 					$icon_class = (!isset($section['icon_class'])) ? '' : ' ' . $section['icon_class'];
 					$icon = (!isset($section['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $section['icon'] . $icon_class . '"></i> ';
@@ -656,7 +659,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['show_import_export']) {
 				echo '<li id="import_export_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['import_icon_type'] == 'image') {
 					$icon = (!isset($this->args['import_icon'])) ? '' : '<img src="' . $this->args['import_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['import_icon_class'])) ? '' : ' ' . $this->args['import_icon_class'];
@@ -670,8 +673,11 @@ if(!class_exists('Redux_Options') ){
 
             if(is_array($this->extra_tabs)) {
 				foreach($this->extra_tabs as $k => $tab) {
-					if($this->args['icon_type'] == 'image') {
+					if($this->args['icon_type'] == 'image' || (isset($tab['icon_type']) && $tab['icon_type'] == 'image')) {
 						$icon = (!isset($tab['icon'])) ? '' : '<img src="' . $tab['icon'] . '" /> ';
+					} elseif(isset($tab['icon_type']) && $tab['icon_type'] == 'iconfont') {
+						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
+    	                $icon = (!isset($tab['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $tab['icon'] . $icon_class . '"></i> ';
 					} else {
 						$icon_class = (!isset($tab['icon_class'])) ? '' : ' ' . $tab['icon_class'];
     	                $icon = (!isset($tab['icon'])) ? '<i class="icon-cog' . $icon_class . '"></i> ' : '<i class="icon-' . $tab['icon'] . $icon_class . '"></i> ';
@@ -684,7 +690,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['dev_mode']) {
 				echo '<li id="dev_mode_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['icon_type'] == 'image') {
+				if($this->args['dev_mode_icon_type'] == 'image') {
 					$icon = (!isset($this->args['dev_mode_icon'])) ? '' : '<img src="' . $this->args['dev_mode_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['dev_mode_icon_class'])) ? '' : ' ' . $this->args['dev_mode_icon_class'];
@@ -887,8 +893,8 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */
         function _field_input($field) {
-            if(isset($field['callback']) && function_exists($field['callback'])) {
-                $value = $this->get($field['id'], '');
+			if(isset($field['callback']) && function_exists($field['callback'])) {
+				$value = $this->get($field['id'], '');
                 do_action('redux-opts-before-field-' . $this->args['opt_name'], $field, $value);
                 call_user_func($field['callback'], $field, $value);
                 do_action('redux-opts-after-field-' . $this->args['opt_name'], $field, $value);

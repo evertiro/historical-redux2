@@ -8,6 +8,26 @@ I develop Redux (and my other projects) because I enjoy them, and almost exclusi
 
 [![Donate to the framework](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "Donate to the framework")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QQJDSRRZVKRGU)
 
+## Features ##
+
+* Uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API")
+* Multiple built in field types
+* Multple layout field types
+* Fields can be over-ridden with a callback function, for custom field types
+* Easily extendable by creating Field Classes
+* Built in Validation Classes
+* Easily extendable by creating Validation Classes
+* Custom Validation error handling, including error counts for each section, and custom styling for error fields
+* Custom Validation warning handling, including warning counts for each section, and custom styling for warning fields
+* Multiple Hook Points for customisation
+* Import / Export Functionality - including cross site importing of settings
+* Easily add page help through the class
+* Much more
+
+## Stay In The Loop! ##
+
+[![Follow us on Twitter](http://www.reduxframework.com/twitter.png "Follow us on Twitter")](https://www.twitter.com/ReduxFramework)
+
 ## Getting Redux ##
 
 Redux can be downloaded in several ways which are outlined below. Please use whichever way you are most comfortable with.
@@ -70,22 +90,6 @@ Edit ```admin/options.php``` as needed. You may want to create a backup of your 
 2. Why shouldn't we edit ```defaults.php```?
  * Because ```defaults.php``` is for *defaults*. Anything that is defined in ```defaults.php``` can be overridden in ```options.php```.
 
-## Features ##
-
-* Uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API")
-* Multiple built in field types
-* Multple layout field types
-* Fields can be over-ridden with a callback function, for custom field types
-* Easily extendable by creating Field Classes
-* Built in Validation Classes
-* Easily extendable by creating Validation Classes
-* Custom Validation error handling, including error counts for each section, and custom styling for error fields
-* Custom Validation warning handling, including warning counts for each section, and custom styling for warning fields
-* Multiple Hook Points for customisation
-* Import / Export Functionality - including cross site importing of settings
-* Easily add page help through the class
-* Much more
-
 ## Who's using Redux? ##
 
 * [WPTube 2](http://wptube.jrwebstudio.com/)
@@ -98,7 +102,11 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Development Branch ###
 
-* Nothing yet...
+* Added option to override ```icon_type``` per icon
+* Minor bug/versioning fixes
+* Added Font Awesome intro
+* Added ```raw_html``` option
+* Added ```text_sortable``` option
 
 ### Version 2.0.0 (January 31, 2013) ###
 

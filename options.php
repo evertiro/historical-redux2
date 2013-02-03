@@ -106,12 +106,12 @@ function setup_framework_options() {
     // Setup custom links in the footer for share icons
     $args['share_icons']['twitter'] = array(
         'link' => 'http://twitter.com/ghost1227',
-        'title' => 'Follow me on Twitter', 
+        'title' => __('Follow me on Twitter', Redux_TEXT_DOMAIN),
         'img' => Redux_OPTIONS_URL . 'img/social/Twitter.png'
     );
     $args['share_icons']['linked_in'] = array(
         'link' => 'http://www.linkedin.com/profile/view?id=52559281',
-        'title' => 'Find me on LinkedIn', 
+        'title' => __('Find me on LinkedIn', Redux_TEXT_DOMAIN),
         'img' => Redux_OPTIONS_URL . 'img/social/LinkedIn.png'
     );
 
@@ -159,7 +159,7 @@ function setup_framework_options() {
     // Set the parent menu.
     // Default: themes.php
     // A list of available parent menus is available at http://codex.wordpress.org/Function_Reference/add_submenu_page#Parameters
-    //$args['page_parent'] = 'options_general.php';
+    //$args['page_parent'] = 'options-general.php';
 
     // Set a custom page location. This allows you to place your menu where you want in the menu order.
     // Must be unique or it will override other items!

@@ -26,6 +26,8 @@ class Redux_Options_google_webfonts {
 
         echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="font"  ' . 'value="' . esc_attr($this->value) . '" />';
 
+	echo '<h3 id="' . $this->field['id'] . '" class="example">Lorem Ipsum is simply dummy text</h3>';
+
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
     }
 

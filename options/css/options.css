@@ -788,6 +788,10 @@
 	display: none;
 }
 
+#redux-opts-main .wp-picker-container {
+	vertical-align: middle;
+}
+
 /* TODO: remove pink */
 .pink {
 	background: pink;

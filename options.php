@@ -213,11 +213,11 @@ function setup_framework_options() {
 			array(
 				'id' => 'font_awesome_info',
 				'type' => 'raw_html',
-				'html' => '<h3 style="text-align: center; border-bottom: none;">Redux Framework is now powered by <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>!</h3><h4 style="text-align: center; font-size: 1.3em;">What does this mean to you?</h4>
+				'html' => '<h3 style="text-align: center; border-bottom: none;">Redux Framework is now powered by <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome</a>!</h3><h4 style="text-align: center; font-size: 1.3em;">What does this mean to you?</h4>
 				<p>Well for one thing it means that Redux as a whole is a much leaner package than it used to be. Those annoying icons took up a <strong>lot</strong> of unnecessary space. Additionally, it means you have a lot more flexibility with your icons.
 				Each icon field has an option for you to define custom classes. These are defined on an icon-by-icon basis and can be Font Awesome specific classes or your own custom ones. Want to see why this is so cool? Keep reading!</p>
 				<br/><span style="font-weight: bold; text-decoration: underline;">The Icons</span><p>There&apos;s just too many to list! <a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Click here</a> for the official list.</p>
-				<br/><span style="font-weight: bold; text-decoration: underline;">The Classes</span><p>There are just as many built-in classes as icons! <a href="http://fortawesome.github.com/Font-Awesome/#examples">Click here</a> for a few examples.</p>
+				<br/><span style="font-weight: bold; text-decoration: underline;">The Classes</span><p>There are just as many built-in classes as icons! <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Click here</a> for a few examples.</p>
 				<br/><span style="font-weight: bold; text-decoration: underline;">Anything Else?</span><p>Yep! Because it&apos;s iconfont and not image based, you can apply pretty much any CSS to an icon!</p>'
 			)
 		)

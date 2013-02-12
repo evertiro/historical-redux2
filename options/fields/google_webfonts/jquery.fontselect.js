@@ -1,6 +1,9 @@
 jQuery(document).ready(function ($) {
     var googlefont = jQuery('.font').fontselect();
-    fontset(googlefont);
+    
+	jQuery(".font").change(function() {
+		fontset(googlefont);
+	});
 
     function fontset(googlefont) {
         var relid = googlefont.attr('id');

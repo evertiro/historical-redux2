@@ -40,7 +40,7 @@ class Redux_Options_upload {
      * @since Redux_Options 1.0.0
     */
     function enqueue() {
-    //         global $wp_version; //AP: why doesn't this work?!?!
+    // gobal $wp_version; //AP: why doesn't this work?!?!
             $wp_version = floatval(get_bloginfo('version'));
 
         if ( $wp_version < "3.5" ) {

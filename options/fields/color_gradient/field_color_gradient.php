@@ -25,8 +25,8 @@ class Redux_Options_color_gradient {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
 
         if(get_bloginfo('version') >= '3.5') {
-            echo __('From:', Redux_TEXT_DOMAIN) . '<input type="text" id="' . $this->field['id'] . '-from" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][from]" value="' . $this->value['from'] . '" class="' . $class . ' popup-colorpicker" style="width:70px;" data-default-color="' . esc_attr($this->value['from']) . '"/>';
-            echo __('To:', Redux_TEXT_DOMAIN) . '<input type="text" id="' . $this->field['id'] . '-to" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][to]" value="' . $this->value['to'] . '" class="' . $class . ' popup-colorpicker" style="width:70px;" data-default-color="' . esc_attr($this->value['to']) . '"/>';
+            echo '<span style="vertical-align: middle;">' . __('From:', Redux_TEXT_DOMAIN) . '</span><input type="text" id="' . $this->field['id'] . '-from" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][from]" value="' . $this->value['from'] . '" class="' . $class . ' popup-colorpicker" style="width:70px;" data-default-color="' . esc_attr($this->value['from']) . '"/>';
+            echo '<span style="vertical-align: middle;">' . __('To:', Redux_TEXT_DOMAIN) . '</span><input type="text" id="' . $this->field['id'] . '-to" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][to]" value="' . $this->value['to'] . '" class="' . $class . ' popup-colorpicker" style="width:70px;" data-default-color="' . esc_attr($this->value['to']) . '"/>';
             echo (isset($this->field['desc']) && !empty($this->field['desc']))?' <span class="description">'.$this->field['desc'].'</span>':'';
         } else {
             echo '<div class="farb-popup-wrapper" id="' . $this->field['id'] . '">';

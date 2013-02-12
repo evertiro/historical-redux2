@@ -316,7 +316,7 @@ if(!class_exists('Redux_Options') ){
             
             wp_register_style(
                 'redux-opts-jquery-ui-css',
-                apply_filters('redux-opts-ui-theme', $this->url . 'css/jquery-ui-aristo/aristo.css'),
+                apply_filters('redux-opts-ui-theme', $this->url . 'css/jquery-ui-bootstrap/jquery-ui-1.10.0.custom.css'),
                 '',
                 time(),
                 'all'
@@ -327,7 +327,7 @@ if(!class_exists('Redux_Options') ){
             if($this->args['admin_stylesheet'] == 'standard') {
                 wp_enqueue_style('redux-opts-css');
             } elseif($this->args['admin_stylesheet'] == 'custom') {
-                wp_enqueue_style('redux-opts-custom-css');
+				wp_enqueue_style('redux-opts-custom-css');
             }
 
 			wp_enqueue_style('redux-font-awesome');
@@ -339,7 +339,7 @@ if(!class_exists('Redux_Options') ){
                 array('jquery'),
                 time(),
                 true
-            );
+			);
 
             wp_localize_script('redux-opts-js', 'redux_opts', array('reset_confirm' => __('Are you sure? You will lose all custom values.', Redux_TEXT_DOMAIN), 'opt_name' => $this->args['opt_name']));
         

@@ -78,4 +78,5 @@ jQuery(document).ready(function () {
         if (jQuery('#redux-opts-export-code').is(':visible')) {jQuery('#redux-opts-export-code').fadeOut('slow'); }
         jQuery('#redux-opts-export-link-value').toggle('fade');
     });
+
 });

@@ -370,6 +370,10 @@
  * Redux_Options_color
  *
  */
+.wp-color-result {
+	margin: 0 6px 0 0;
+}
+
 .iris-picker .iris-slider-offset {
     position: relative !important;
     top: 0 !important;

@@ -107,6 +107,7 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 * Added Font Awesome intro
 * Added ```raw_html``` option
 * Added ```text_sortable``` option
+* Switched from Aristo to Bootstrap jQuery UI theme
 
 ### Version 2.0.0 (January 31, 2013) ###
 

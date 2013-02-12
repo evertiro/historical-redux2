@@ -3,7 +3,9 @@
 This is the uploader for wordpress starting from version 3.5
 */
 jQuery(document).ready(function(){
-
+            
+            jQuery("img[src='']").attr("src", redux_upload.url);
+            
             jQuery(".redux-opts-upload").click( function( event ) {
                 var activeFileUploadContext = jQuery(this).parent();
                 var relid = jQuery(this).attr('rel-id');

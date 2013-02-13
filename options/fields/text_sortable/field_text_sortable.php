@@ -37,7 +37,7 @@ class Redux_Options_text_sortable {
                 }
             } else {
                 foreach ($options as $k => $nicename) {
-                    $value_display = isset($this->value[$k]) ? $this->value[$k] : 'http://';
+                    $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
                     echo '<li>';
                     echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $nicename . ':</strong></label>';
                     echo '<input type="text" id="' . $this->field['id'] . '[' . $k . ']" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';

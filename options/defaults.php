@@ -55,7 +55,7 @@ if(!class_exists('Redux_Options') ){
             $defaults['show_import_export'] = true;
             $defaults['dev_mode'] = true;
             $defaults['admin_stylesheet'] = 'standard';
-            $defaults['footer_credit'] = __('<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', Redux_TEXT_DOMAIN);
+            $defaults['footer_credit'] = sprintf(__('<span id="footer-thankyou">Options panel created using <a href="%s" target="_blank">Redux Framework</a> v%s</span>', Redux_TEXT_DOMAIN), $this->framework_url, $this->framework_version);
             $defaults['help_tabs'] = array();
             $defaults['help_sidebar'] = __('', Redux_TEXT_DOMAIN);
 

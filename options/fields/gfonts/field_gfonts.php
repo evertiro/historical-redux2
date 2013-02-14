@@ -108,8 +108,6 @@ class Redux_Options_gfonts extends Redux_Options {
         }
 
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
-
-	    echo '<br /><br /><br /><strong>Current field value, for testing:</strong>';
     }
 
     /**

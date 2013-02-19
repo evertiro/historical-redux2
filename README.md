@@ -84,7 +84,7 @@ Edit ```admin/options.php``` as needed. You may want to create a backup of your 
 
 ## FAQs ##
 
-1. Why should we use ```require_once` instead of ```get_template_part`?
+1. Why should we use ```require_once``` instead of ```get_template_part```?
  * First, because ```get_template_part``` is for... you guessed it, themes! Redux is designed to work with both themes *and* plugins.
  * Second, read [this](http://kovshenin.com/2013/get_template_part/).
 2. Why shouldn't we edit ```defaults.php```?

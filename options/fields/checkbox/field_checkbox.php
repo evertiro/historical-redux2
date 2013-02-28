@@ -24,16 +24,16 @@ class Redux_Options_checkbox {
     function render() {
         $name = $this->args['opt_name'] . '[' . $this->field['id'] . ']';
         $id = $this->field['id'];
-        $desc = isset($this->field['desc']) ? $this->field['desc'] : '';
-        $class = isset($this->field['class']) ? $this->field['class'] : '';
-        $switch = isset($this->field['switch']) ? $this->field['switch'] : false;
+        $desc = isset( $this->field['desc'] ) ? $this->field['desc'] : '';
+        $class = isset( $this->field['class'] ) ? $this->field['class'] : '';
+        $switch = isset( $this->field['switch'] ) ? $this->field['switch'] : apply_filters( 'redux_checkbox_switch_default', false );
         ?>
 
-    	<label <?php if($switch) : ?>class="switch_wrap"<?php endif; ?>>
-			<input name="<?php echo $name; ?>" id="<?php echo $id; ?>" class="<?php echo $class; ?>" value="1" <?php echo checked($this->value, '1', FALSE); ?> type="checkbox" />
-			<?php if($switch) : ?><div class="switch"><span class="bullet"></span></div><?php endif; ?>
+    	<label <?php if ( $switch ) : ?>class="switch_wrap"<?php endif; ?>>
+			<input name="<?php echo $name; ?>" id="<?php echo $id; ?>" class="<?php echo $class; ?>" value="1" <?php echo checked( $this->value, '1', false ); ?> type="checkbox" />
+			<?php if ( $switch ) : ?><div class="switch"><span class="bullet"></span></div><?php endif; ?>
 		</label>
-		<?php if($desc != '') : ?>
+		<?php if ( ! empty( $desc ) ) : ?>
 			<label for="<?php echo $id; ?>"><?php echo $desc; ?></label>
 		<?php endif; ?>
 

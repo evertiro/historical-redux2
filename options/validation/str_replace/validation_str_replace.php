@@ -1,5 +1,5 @@
 <?php
-class Redux_Validation_str_replace extends Redux_Options{	
+class Redux_Validation_str_replace {	
 
 	/**
 	 * Field Constructor.
@@ -9,7 +9,6 @@ class Redux_Validation_str_replace extends Redux_Options{
 	 * @since Redux_Options 1.0.0
 	*/
 	function __construct($field, $value, $current) {
-		parent::__construct();
 		$this->field = $field;
 		$this->value = $value;
 		$this->current = $current;

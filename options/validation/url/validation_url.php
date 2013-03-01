@@ -1,5 +1,5 @@
 <?php
-class Redux_Validation_url extends Redux_Options {
+class Redux_Validation_url {
 
 	/**
 	 * Field Constructor.
@@ -9,7 +9,6 @@ class Redux_Validation_url extends Redux_Options {
 	 * @since Redux_Options 1.0.0
 	*/
 	function __construct($field, $value, $current) {
-		parent::__construct();
 		$this->field = $field;
 		$this->field['msg'] = (isset($this->field['msg'])) ? $this->field['msg'] : __('You must provide a valid URL for this option.', Redux_TEXT_DOMAIN);
 		$this->value = $value;

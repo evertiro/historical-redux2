@@ -716,7 +716,7 @@ if(!class_exists('Redux_Options') ){
 
                 echo '<h3>' . __('Import / Export Options', Redux_TEXT_DOMAIN) . '</h3>';
                 echo '<h4>' . __('Import Options', Redux_TEXT_DOMAIN) . '</h4>';
-                echo '<p><a href="javascript:void(0);" id="redux-opts-import-code-button" class="button-secondary">' . __('Import from file') . '</a> <a href="javascript:void(0);" id="redux-opts-import-link-button" class="button-secondary">' . __('Import from URL', Redux_TEXT_DOMAIN) . '</a></p>';
+                echo '<p><a href="javascript:void(0);" id="redux-opts-import-code-button" class="button-secondary">' . __('Import from file', Redux_TEXT_DOMAIN) . '</a> <a href="javascript:void(0);" id="redux-opts-import-link-button" class="button-secondary">' . __('Import from URL', Redux_TEXT_DOMAIN) . '</a></p>';
 
                 echo '<div id="redux-opts-import-code-wrapper">';
 

@@ -22,6 +22,6 @@ class Redux_Options_raw_html {
      * @since Redux_Options 2.0.1
     */
     function render() {
-        echo '</td></tr></table><div>' . $this->field['html'] . '</div><table class="form-table no-border"><tbody><tr><th></th><td>';
+        echo '</td></tr><div>' . $this->field['html'] . '</div>';
     }
 }

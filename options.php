@@ -612,6 +612,17 @@ function setup_framework_options() {
                 'args' => array('number' => '10') // Uses get_categories()
             ),
             array(
+                'id' => 'demo_taxonomy_multi_select',
+                'type' => 'taxonomy_multi_select',
+                'title' => __('Taxonomies Multi select', Redux_TEXT_DOMAIN),
+//                'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
+                'desc' => __('Sometimes you need to select some taxonomies.', Redux_TEXT_DOMAIN),
+                'args' => array(
+                    'public'=> true, // more details here http://codex.wordpress.org/Function_Reference/get_taxonomies
+                    '_builtin'=> true, // use false if you want to hide the buit in taxonomies like "category", "post_tag", "post_format"
+                ) // These args are used in get_taxonomies()
+            ),
+            array(
                 'id' => 'menu_select_demo',
                 'type' => 'menu_select',
                 'title' => __('Menu Select Option', Redux_TEXT_DOMAIN),

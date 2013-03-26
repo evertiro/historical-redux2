@@ -43,13 +43,13 @@ function add_another_section($sections) {
 
 
 /*
- * 
+ *
  * Custom function for filtering the args array given by a theme, good for child themes to override or add to the args array.
  *
  */
 function change_framework_args($args) {
     //$args['dev_mode'] = false;
-    
+
     return $args;
 }
 //add_filter('redux-opts-args-twenty_eleven', 'change_framework_args');
@@ -179,7 +179,7 @@ function setup_framework_options() {
     // Disable the panel sections showing as submenu items.
     // Default: true
     //$args['allow_sub_menu'] = false;
-        
+
     // Set ANY custom page help tabs, displayed using the new help tab API. Tabs are shown in order of definition.
     $args['help_tabs'][] = array(
         'id' => 'redux-opts-1',
@@ -192,7 +192,7 @@ function setup_framework_options() {
         'content' => __('<p>This is the tab content, HTML is allowed.</p>', Redux_TEXT_DOMAIN)
     );
 
-    // Set the help sidebar for the options page.                                        
+    // Set the help sidebar for the options page.
     $args['help_sidebar'] = __('<p>This is the sidebar content, HTML is allowed.</p>', Redux_TEXT_DOMAIN);
 
     $sections = array();
@@ -237,7 +237,7 @@ function setup_framework_options() {
                 'title' => __('Text Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('This is a little space under the field title which can be used for additonal info.', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
-                //'validate' => '', // Built-in validation includes: 
+                //'validate' => '', // Built-in validation includes:
                 //  email, html, html_custom, no_html, js, numeric, comma_numeric, url, str_replace, preg_replace
                 //'msg' => 'custom error message', // Override the default validation error message for specific fields
                 //'std' => '', // This is the default value and is used to set an option on theme activation.
@@ -350,7 +350,7 @@ function setup_framework_options() {
             array(
                 'id' => 'textarea_demo_no_html',
                 'type' => 'textarea',
-                'title' => __('Textarea Option - No HTML Validated', Redux_TEXT_DOMAIN), 
+                'title' => __('Textarea Option - No HTML Validated', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('All HTML will be stripped', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'validate' => 'no_html',
@@ -359,7 +359,7 @@ function setup_framework_options() {
             array(
                 'id' => 'textarea_demo_html',
                 'type' => 'textarea',
-                'title' => __('Textarea Option - HTML Validated', Redux_TEXT_DOMAIN), 
+                'title' => __('Textarea Option - HTML Validated', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('HTML Allowed', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'validate' => 'html', // See http://codex.wordpress.org/Function_Reference/wp_kses_post
@@ -368,7 +368,7 @@ function setup_framework_options() {
             array(
                 'id' => 'textarea_demo_html_custom',
                 'type' => 'textarea',
-                'title' => __('Textarea Option - HTML Validated Custom', Redux_TEXT_DOMAIN), 
+                'title' => __('Textarea Option - HTML Validated Custom', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Custom HTML Allowed', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'validate' => 'html_custom',
@@ -378,7 +378,7 @@ function setup_framework_options() {
             array(
                 'id' => 'textarea_demo_js',
                 'type' => 'textarea',
-                'title' => __('Textarea Option - JS Validated', Redux_TEXT_DOMAIN), 
+                'title' => __('Textarea Option - JS Validated', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('JS will be escaped', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'validate' => 'js'
@@ -394,7 +394,7 @@ function setup_framework_options() {
             array(
                 'id' => 'editor_demo2',
                 'type' => 'editor',
-                'title' => __('Editor Option 2', Redux_TEXT_DOMAIN), 
+                'title' => __('Editor Option 2', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Can also use the validation methods if required', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'std' => 'OOOOOOhhhh, rich editing with auto paragraphs disabled.',
@@ -402,7 +402,7 @@ function setup_framework_options() {
             )
         )
     );
-    
+
     $sections[] = array(
 		'icon' => 'check',
 		'icon_class' => 'icon-large',
@@ -412,7 +412,7 @@ function setup_framework_options() {
             array(
                 'id' => 'checkbox_demo_switch',
                 'type' => 'checkbox',
-                'title' => __('Switch Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Switch Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'switch' => true,
@@ -421,7 +421,7 @@ function setup_framework_options() {
             array(
                 'id' => 'checkbox_demo',
                 'type' => 'checkbox',
-                'title' => __('Checkbox Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Checkbox Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'switch' => false,
@@ -430,7 +430,7 @@ function setup_framework_options() {
             array(
                 'id' => 'multi_checkbox_demo',
                 'type' => 'multi_checkbox',
-                'title' => __('Multi Checkbox Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Multi Checkbox Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for multi checkbox options
@@ -439,7 +439,7 @@ function setup_framework_options() {
             array(
                 'id' => 'radio_demo',
                 'type' => 'radio',
-                'title' => __('Radio Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Radio Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for radio options
@@ -448,7 +448,7 @@ function setup_framework_options() {
             array(
                 'id' => 'radio_img_demo',
                 'type' => 'radio_img',
-                'title' => __('Radio Image Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Radio Image Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array(
@@ -462,7 +462,7 @@ function setup_framework_options() {
             array(
                 'id' => 'radio_img_demo_layout',
                 'type' => 'radio_img',
-                'title' => __('Radio Image Option For Layout', Redux_TEXT_DOMAIN), 
+                'title' => __('Radio Image Option For Layout', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This uses some of the built in images, you can use them for layout options.', Redux_TEXT_DOMAIN),
                 'options' => array(
@@ -471,10 +471,10 @@ function setup_framework_options() {
                     '3' => array('title' => '2 Column Right', 'img' => Redux_OPTIONS_URL . 'img/2cr.png')
                 ), // Must provide key => value(array:title|img) pairs for radio options
                 'std' => '2'
-            )                                                                        
+            )
         )
     );
-    
+
     $sections[] = array(
 		'icon' => 'list-alt',
 		'icon_class' => 'icon-large',
@@ -484,7 +484,7 @@ function setup_framework_options() {
             array(
                 'id' => 'select_demo',
                 'type' => 'select',
-                'title' => __('Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for select options
@@ -493,15 +493,15 @@ function setup_framework_options() {
             array(
                 'id' => 'multi_select_demo',
                 'type' => 'multi_select',
-                'title' => __('Multi Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Multi Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for radio options
                 'std' => array('2', '3')
-            )                                    
+            )
         )
     );
-    
+
     $sections[] = array(
 		'icon' => 'cogs',
 		'icon_class' => 'icon-large',
@@ -511,7 +511,7 @@ function setup_framework_options() {
             array(
                 'id' => 'color_demo',
                 'type' => 'color',
-                'title' => __('Color Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Color Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Only color validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'std' => '#FFFFFF'
@@ -527,14 +527,14 @@ function setup_framework_options() {
             array(
                 'id' => 'date_demo',
                 'type' => 'date',
-                'title' => __('Date Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Date Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
             ),
             array(
                 'id' => 'button_set_demo',
                 'type' => 'button_set',
-                'title' => __('Button Set Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Button Set Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
                 'options' => array('1' => 'Opt 1', '2' => 'Opt 2', '3' => 'Opt 3'), // Must provide key => value pairs for radio options
@@ -543,14 +543,14 @@ function setup_framework_options() {
             array(
                 'id' => 'upload_demo',
                 'type' => 'upload',
-                'title' => __('Upload Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Upload Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
             ),
             array(
                 'id' => 'pages_select_demo',
                 'type' => 'pages_select',
-                'title' => __('Pages Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Pages Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all the sites pages.', Redux_TEXT_DOMAIN),
                 'args' => array() // Uses get_pages()
@@ -558,7 +558,7 @@ function setup_framework_options() {
             array(
                 'id' => 'pages_multi_select_demo',
                 'type' => 'pages_multi_select',
-                'title' => __('Pages Multiple Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Pages Multiple Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a multi select menu of all the sites pages.', Redux_TEXT_DOMAIN),
                 'args' => array('number' => '5') // Uses get_pages()
@@ -566,7 +566,7 @@ function setup_framework_options() {
             array(
                 'id' => 'posts_select_demo',
                 'type' => 'posts_select',
-                'title' => __('Posts Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Posts Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all the sites posts.', Redux_TEXT_DOMAIN),
                 'args' => array('numberposts' => '10') // Uses get_posts()
@@ -574,7 +574,7 @@ function setup_framework_options() {
             array(
                 'id' => 'posts_multi_select_demo',
                 'type' => 'posts_multi_select',
-                'title' => __('Posts Multiple Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Posts Multiple Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a multi select menu of all the sites posts.', Redux_TEXT_DOMAIN),
                 'args' => array('numberposts' => '10') // Uses get_posts()
@@ -582,7 +582,7 @@ function setup_framework_options() {
             array(
                 'id' => 'tags_select_demo',
                 'type' => 'tags_select',
-                'title' => __('Tags Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Tags Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all the sites tags.', Redux_TEXT_DOMAIN),
                 'args' => array('number' => '10') // Uses get_tags()
@@ -590,7 +590,7 @@ function setup_framework_options() {
             array(
                 'id' => 'tags_multi_select_demo',
                 'type' => 'tags_multi_select',
-                'title' => __('Tags Multiple Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Tags Multiple Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a multi select menu of all the sites tags.', Redux_TEXT_DOMAIN),
                 'args' => array('number' => '10') // Uses get_tags()
@@ -598,7 +598,7 @@ function setup_framework_options() {
             array(
                 'id' => 'cats_select_demo',
                 'type' => 'cats_select',
-                'title' => __('Cats Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Cats Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all the sites cats.', Redux_TEXT_DOMAIN),
                 'args' => array('number' => '10') // Uses get_categories()
@@ -606,7 +606,7 @@ function setup_framework_options() {
             array(
                 'id' => 'cats_multi_select_demo',
                 'type' => 'cats_multi_select',
-                'title' => __('Cats Multiple Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Cats Multiple Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a multi select menu of all the sites cats.', Redux_TEXT_DOMAIN),
                 'args' => array('number' => '10') // Uses get_categories()
@@ -633,14 +633,14 @@ function setup_framework_options() {
             array(
                 'id' => 'menu_location_select_demo',
                 'type' => 'menu_location_select',
-                'title' => __('Menu Location Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Menu Location Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all the themes menu locations.', Redux_TEXT_DOMAIN)
             ),
             array(
                 'id' => 'post_type_select_demo',
                 'type' => 'post_type_select',
-                'title' => __('Post Type Select Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Post Type Select Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all registered post types.', Redux_TEXT_DOMAIN),
                 //'args' => array() // Uses get_post_types()
@@ -648,7 +648,7 @@ function setup_framework_options() {
             array(
                 'id' => 'select_hide_below_demo',
                 'type' => 'select_hide_below',
-                'title' => __('Select Hide Below Option', Redux_TEXT_DOMAIN), 
+                'title' => __('Select Hide Below Option', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field requires certain options to be checked before the below field will be shown.', Redux_TEXT_DOMAIN),
                 'options' => array(
@@ -661,14 +661,14 @@ function setup_framework_options() {
             array(
                 'id' => 'checkbox_hide_below_demo',
                 'type' => 'checkbox_hide_below',
-                'title' => __('Checkbox to hide below', Redux_TEXT_DOMAIN), 
+                'title' => __('Checkbox to hide below', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a checkbox which will allow the user to use the next setting.', Redux_TEXT_DOMAIN),
             ),
             array(
                 'id' => 'custom_callback_demo',
                 //'type' => 'nothing', // Doesn't need to be called for callback fields
-                'title' => __('Custom Field Callback', Redux_TEXT_DOMAIN), 
+                'title' => __('Custom Field Callback', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('This is a completely unique field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is created with a callback function, so anything goes in this field. Make sure to define the function though.', Redux_TEXT_DOMAIN),
                 'callback' => 'my_custom_field'
@@ -676,10 +676,28 @@ function setup_framework_options() {
             array(
                 'id' => 'google_webfonts_demo',
                 'type' => 'google_webfonts',
-                'title' => __('Google Webfonts', Redux_TEXT_DOMAIN), 
+                'title' => __('Google Webfonts', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('This is a completely unique field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\'t forget to set your API key!', Redux_TEXT_DOMAIN)
-            )                            
+            ),
+            array(
+                "id" => "homepage_blocks",
+                "type" => "sorter",
+                "title" => "Homepage Layout Manager",
+                "desc" => "Organize how you want the layout to appear on the homepage",
+                'options' => array(
+                    "enabled" => array(
+                        "placebo" => "placebo", //REQUIRED!
+                        "highlights" => "Highlights",
+                        "slider" => "Slider",
+                        "staticpage" => "Static Page",
+                        "services" => "Services"
+                    ),
+                    "disabled" => array(
+                        "placebo" => "placebo", //REQUIRED!
+                    )
+                ),
+            ),
         )
     );
 
@@ -692,7 +710,7 @@ function setup_framework_options() {
             array(
                 'id' => 'text_spacer1',
                 'type' => 'text',
-                'title' => __('Text Field', Redux_TEXT_DOMAIN), 
+                'title' => __('Text Field', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Additional Info', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
             ),
@@ -703,7 +721,7 @@ function setup_framework_options() {
             array(
                 'id' => 'text_spacer2',
                 'type' => 'text',
-                'title' => __('Text Field', Redux_TEXT_DOMAIN), 
+                'title' => __('Text Field', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Additional Info', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
             ),
@@ -715,7 +733,7 @@ function setup_framework_options() {
             array(
                 'id' => 'text_spacer3',
                 'type' => 'text',
-                'title' => __('Text Field', Redux_TEXT_DOMAIN), 
+                'title' => __('Text Field', Redux_TEXT_DOMAIN),
                 'sub_desc' => __('Additional Info', Redux_TEXT_DOMAIN),
                 'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN)
 			),
@@ -726,7 +744,7 @@ function setup_framework_options() {
 			)
         )
     );
-                
+
     $tabs = array();
 
     if (function_exists('wp_get_theme')){
@@ -746,7 +764,7 @@ function setup_framework_options() {
         $version = $theme_data['Version'];
         $tags = $theme_data['Tags'];
      }
-    
+
     $item_info = '<div class="redux-opts-section-desc">';
     $item_info .= '<p class="redux-opts-item-data description item-uri">' . __('<strong>Theme URL:</strong> ', Redux_TEXT_DOMAIN) . '<a href="' . $item_uri . '" target="_blank">' . $item_uri . '</a></p>';
     $item_info .= '<p class="redux-opts-item-data description item-author">' . __('<strong>Author:</strong> ', Redux_TEXT_DOMAIN) . ($author_uri ? '<a href="' . $author_uri . '" target="_blank">' . $author . '</a>' : $author) . '</p>';
@@ -761,7 +779,7 @@ function setup_framework_options() {
         'title' => __('Theme Information', Redux_TEXT_DOMAIN),
         'content' => $item_info
     );
-    
+
     if(file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
         $tabs['docs'] = array(
 			'icon' => 'book',
@@ -778,7 +796,7 @@ function setup_framework_options() {
 add_action('init', 'setup_framework_options', 0);
 
 /*
- * 
+ *
  * Custom function for the callback referenced above
  *
  */
@@ -788,7 +806,7 @@ function my_custom_field($field, $value) {
 }
 
 /*
- * 
+ *
  * Custom function for the callback validation referenced above
  *
  */
@@ -797,7 +815,7 @@ function validate_callback_function($field, $value, $existing_value) {
     $value =  'just testing';
     /*
     do your validation
-    
+
     if(something) {
         $value = $value;
     } elseif(somthing else) {
@@ -806,7 +824,7 @@ function validate_callback_function($field, $value, $existing_value) {
         $field['msg'] = 'your custom error message';
     }
     */
-    
+
     $return['value'] = $value;
     if($error == true) {
         $return['error'] = $field;

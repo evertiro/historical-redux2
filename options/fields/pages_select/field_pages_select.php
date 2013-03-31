@@ -1,5 +1,6 @@
 <?php
-class Redux_Options_pages_select {
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_pages_select extends Redux_Options_select {
 
     /**
      * Field Constructor.
@@ -12,26 +13,11 @@ class Redux_Options_pages_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . 'rows="6" >';
-        $args = wp_parse_args($this->field['args'], array());
-        $pages = get_pages($args);
-
-        foreach($pages as $page) {
-            echo '<option value="' . $page->ID . '"' . selected($this->value, $page->ID, false) . '>' . $page->post_title . '</option>';
-        }
-
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+		
+		$wp_args = wp_parse_args($this->field['args'], array());
+		$posts = get_pages($wp_args);
+		foreach ($posts as $post) {
+			$this->field['options'][$post->ID] = $post->post_title;
+		}
     }
 }

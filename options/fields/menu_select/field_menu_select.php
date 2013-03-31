@@ -1,5 +1,6 @@
 <?php
-class Redux_Options_menu_select {
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_menu_select extends Redux_Options_select  {
 
     /**
      * Field Constructor.
@@ -12,29 +13,12 @@ class Redux_Options_menu_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . ' >';
-        if(!isset($this->field['args'])) { $this->field['args'] = array(); }
-        $args = wp_parse_args($this->field['args'], array());
-
+		
         $menus = wp_get_nav_menus($args);
         if($menus) {
             foreach ($menus as $menu) {
-                echo '<option value="' . $menu->term_id . '"' . selected($this->value, $menu->term_id, false) . '>' . $menu->name . '</option>';
-            }
-        }
-
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+				$this->field['options'][$menu->term_id] = $menu->name;
+			}
+		}
     }
 }

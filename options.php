@@ -646,6 +646,14 @@ function setup_framework_options() {
                 //'args' => array() // Uses get_post_types()
             ),
             array(
+                'id' => 'post_type_multi_select_demo',
+                'type' => 'post_type_multi_select',
+                'title' => __('Post Type Multi Select Option', Redux_TEXT_DOMAIN), 
+                'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
+                'desc' => __('This field creates a multi select menu of all registered post types.', Redux_TEXT_DOMAIN),
+                //'args' => array() // Uses get_post_types()
+            ),
+            array(
                 'id' => 'select_hide_below_demo',
                 'type' => 'select_hide_below',
                 'title' => __('Select Hide Below Option', Redux_TEXT_DOMAIN), 

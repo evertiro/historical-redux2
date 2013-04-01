@@ -1,5 +1,6 @@
 <?php
-class Redux_Options_tags_multi_select {
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_tags_multi_select extends Redux_Options_select {
 
     /**
      * Field Constructor.
@@ -12,25 +13,12 @@ class Redux_Options_tags_multi_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }//function
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" ' . $class . 'multiple="multiple" >';
-        $args = wp_parse_args($this->field['args'], array());
-        $tags = get_tags($args);
-        foreach($tags as $tag) {
-            $selected = (is_array($this->value) && in_array($tag->term_id, $this->value)) ? ' selected="selected"' : '';
-            echo '<option value="' . $tag->term_id . '"' . $selected . '>' . $tag->name . '</option>';
-        }
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br/><span class="description">' . $this->field['desc'] . '</span>' : '';
+		
+		$wp_args = wp_parse_args($this->field['args'], array());
+		$tags = get_tags($wp_args);
+		foreach ($tags as $tag) {
+			$this->field['options'][$tag->term_id] = $tag->name;
+		}
+		$this->field['multiselect'] = true;
     }
 }

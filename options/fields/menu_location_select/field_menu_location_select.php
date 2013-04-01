@@ -1,5 +1,6 @@
 <?php
-class Redux_Options_menu_location_select {
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_menu_location_select extends Redux_Options_select {
 
     /**
      * Field Constructor.
@@ -12,28 +13,10 @@ class Redux_Options_menu_location_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
+		
         global $_wp_registered_nav_menus;
-
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . ' >';
-
-        if($_wp_registered_nav_menus) {
-            foreach($_wp_registered_nav_menus as $k => $v) {
-                echo '<option value="' . $k . '"' . selected($this->value, $k, false) . '>' . $v . '</option>';
-            }
-        }
-
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+		if($_wp_registered_nav_menus) {
+			$this->field['options'] = $_wp_registered_nav_menus;
+		}
     }
 }

@@ -561,7 +561,7 @@ function setup_framework_options() {
                 'title' => __('Pages Multiple Select Option', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a multi select menu of all the sites pages.', Redux_TEXT_DOMAIN),
-                'args' => array('number' => '5') // Uses get_pages()
+                'args' => array('number' => '7') // Uses get_pages()
             ),
             array(
                 'id' => 'posts_select_demo',
@@ -643,6 +643,14 @@ function setup_framework_options() {
                 'title' => __('Post Type Select Option', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This field creates a drop down menu of all registered post types.', Redux_TEXT_DOMAIN),
+                //'args' => array() // Uses get_post_types()
+            ),
+            array(
+                'id' => 'post_type_multi_select_demo',
+                'type' => 'post_type_multi_select',
+                'title' => __('Post Type Multi Select Option', Redux_TEXT_DOMAIN), 
+                'sub_desc' => __('No validation can be done on this field type', Redux_TEXT_DOMAIN),
+                'desc' => __('This field creates a multi select menu of all registered post types.', Redux_TEXT_DOMAIN),
                 //'args' => array() // Uses get_post_types()
             ),
             array(

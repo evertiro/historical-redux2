@@ -1,5 +1,6 @@
 <?php
-class Redux_Options_pages_multi_select {
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_pages_multi_select extends Redux_Options_select {
 
     /**
      * Field Constructor.
@@ -12,27 +13,12 @@ class Redux_Options_pages_multi_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" ' . $class . 'multiple="multiple" >';
-        $args = wp_parse_args($this->field['args'], array());
-        $pages = get_pages($args);
-
-        foreach ($pages as $page) {
-            $selected = (is_array($this->value) && in_array($page->ID, $this->value)) ? ' selected="selected"' : '';
-            echo '<option value="' . $page->ID . '"' . $selected . '>' . $page->post_title . '</option>';
-        }
-
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br/><span class="description">' . $this->field['desc'] . '</span>' : '';
+		
+		$wp_args = wp_parse_args($this->field['args'], array());
+		$posts = get_pages($wp_args);
+		foreach ($posts as $post) {
+			$this->field['options'][$post->ID] = $post->post_title;
+		}
+		$this->field['multiselect'] = true;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
-class Redux_Options_post_type_select extends Redux_Options_select {
+class Redux_Options_post_type_multi_select extends Redux_Options_select {
 
     /**
      * Field Constructor.
@@ -16,5 +16,6 @@ class Redux_Options_post_type_select extends Redux_Options_select {
 		
         $wp_args = wp_parse_args($this->field['args'], array('public' => true));
 		$this->field['options'] = get_post_types($wp_args, 'names');
+		$this->field['multiselect'] = true;
     }
 }

@@ -1,6 +1,7 @@
 <?php
-class Redux_Options_cats_select {
-    
+require_once(dirname(__FILE__).'/../select/'.'field_select.php'); 
+class Redux_Options_cats_select extends Redux_Options_select {
+
     /**
      * Field Constructor.
      *
@@ -12,26 +13,11 @@ class Redux_Options_cats_select {
         $this->field = $field;
 		$this->value = $value;
 		$this->args = $parent->args;
-    }
-
-    /**
-     * Field Render Function.
-     *
-     * Takes the vars and outputs the HTML for the field in the settings
-     *
-     * @since Redux_Options 1.0.0
-    */
-    function render() {
-        $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . ' >';
-        $args = wp_parse_args($this->field['args'], array());
-        $cats = get_categories($args);
-
-        foreach($cats as $cat) {
-            echo '<option value="' . $cat->term_id . '"' . selected($this->value, $cat->term_id, false) . '>' . $cat->name . '</option>';
-        }
-
-        echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+		
+		$wp_args = wp_parse_args($this->field['args'], array());
+		$cats = get_categories($wp_args);
+		foreach ($cats as $cat) {
+			$this->field['options'][$cat->term_id] = $cat->name;
+		}
     }
 }

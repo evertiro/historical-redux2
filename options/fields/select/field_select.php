@@ -23,11 +23,17 @@ class Redux_Options_select {
     */
     function render() {
         $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $class . 'rows="6" >';
+		if ($this->field['multiselect']) {
+			$array_dims = '[]';
+			$multiselect = ' multiple="multiple"';
+			$multiselect .= ' size="' . (isset($this->field['rows']) ? $this->field['rows'] : '6') .'"'; //'rows' is the number of rows to display on multi-select
+		}
+        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']' . $array_dims . '" ' . $class . $multiselect . ' >';
         foreach($this->field['options'] as $k => $v) {
-            echo '<option value="' . $k . '" ' . selected($this->value, $k, false) . '>' . $v . '</option>';
+            $selected = (is_array($this->value) && in_array($k, $this->value) || $this->value == $k) ? ' selected="selected"' : '';
+            echo '<option value="' . $k . '"' . $selected . '>' . $v . '</option>';
         }
         echo '</select>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
+        echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br/><span class="description">' . $this->field['desc'] . '</span>' : '';
     }
 }

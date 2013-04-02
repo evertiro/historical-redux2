@@ -384,16 +384,6 @@ function setup_framework_options() {
                 'validate' => 'js'
             ),
             array(
-                'id' => 'accordion_demo',
-                'type' => 'accordion',
-                'title' => __('Accordion Option', Redux_TEXT_DOMAIN), 
-                'sub_desc' => __('Accordions using jQuery UI', Redux_TEXT_DOMAIN),
-                'desc' => __('This is the description field, again good for additional info.', Redux_TEXT_DOMAIN),
- //               'validate' => 'no_html',
-		'number' => 7,
-                'std' => 'No HTML is allowed in here.'
-            ),            
-            array(
                 'id' => 'editor_demo',
                 'type' => 'editor',
                 'title' => __('Editor Option', Redux_TEXT_DOMAIN),
@@ -697,18 +687,7 @@ function setup_framework_options() {
                 'title' => __('Google Webfonts', Redux_TEXT_DOMAIN), 
                 'sub_desc' => __('This is a completely unique field type', Redux_TEXT_DOMAIN),
                 'desc' => __('This is a simple implementation of the developer API for Google Webfonts. Don\'t forget to set your API key!', Redux_TEXT_DOMAIN)
-            ),
-             array(
-                'id' => 'sliderui_demo',
-                'type' => 'sliderui',
-                'title' => __('Slider UI', Redux_TEXT_DOMAIN), 
-                'sub_desc' => __('A field type made with jQuery UI slider', Redux_TEXT_DOMAIN),		                'label' => __('Slider UI', Redux_TEXT_DOMAIN), 
-                'min' => 0,
-		'max' => 100,
-		'step' => 1,
-		'class' => 'slider_ui',
-                'desc' => __('This is a simple implementation of a slider element using jQueryUI', Redux_TEXT_DOMAIN)
-            )           
+            )                            
         )
     );
 

@@ -24,8 +24,8 @@ class Redux_Options_google_webfonts {
     function render() {
         echo '<p class="description" style="color:red;">' . __('The fonts provided below are free to use custom fonts from the <a href="http://www.google.com/webfonts" target="_blank">Google Web Fonts directory</a>', Redux_TEXT_DOMAIN) . '</p>';
 
-        echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="font"  ' . 'value="' . esc_attr($this->value) . '" />';
-		echo '<br /><label for="' . $this->field['id'] . '" class="example">Lorem Ipsum is simply dummy text</label>';
+        echo '<input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="fontselect"  ' . 'value="' . esc_attr($this->value) . '" />';
+		echo '<br /><label for="' . $this->field['id'] . '" class="redux-font-select fs-example">Lorem Ipsum is simply dummy text</label>';
 
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';
     }

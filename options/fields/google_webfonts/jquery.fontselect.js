@@ -1,7 +1,7 @@
 jQuery(function () {
-  jQuery('.font').fontselect();
+  jQuery('.fontselect').fontselect();
   
-  jQuery(".font").change(function() {
+  jQuery(".fontselect").change(function() {
     var this_id = jQuery(this).attr('id');
     var font = jQuery(this).val();
     font = font.replace(/\+/g, ' ').split(':');
@@ -1042,7 +1042,7 @@ jQuery(function () {
     ];
 
     var settings = $.extend( {
-      style:            'font-select',
+      style:            'redux-font-select',
       placeholder:      'Select a font',
       resettext:        'Reset',
       lookahead:        6,
@@ -1131,13 +1131,13 @@ jQuery(function () {
       Fontselect.prototype.toggleDrop = function(ev){
 
         if(this.active){
-          this.$element.removeClass('font-select-active');
+          this.$element.removeClass('redux-font-select-active');
           this.$top = this.$results.scrollTop();
           this.$drop.hide();
           clearInterval(this.visibleInterval);
 
         } else {
-          this.$element.addClass('font-select-active');
+          this.$element.addClass('redux-font-select-active');
           this.$drop.show();
           this.$results.scrollTop(this.$top);
           this.moveToSelected();
@@ -1201,7 +1201,7 @@ jQuery(function () {
         this.$select = $('<a><span>'+ this.options.placeholder +'</span></a>');
         this.$drop = $('<div>', {'class': 'fs-drop'});
         this.$results = $('<ul>', {'class': 'fs-results'});
-        this.$reset = $('<input type="button" value="'+ this.options.resettext +'" class="fs-reset" />');
+        this.$reset = $('<input type="button" class="'+ this.options.style +' fs-reset button" value="'+ this.options.resettext +'" />');
         this.$original.after(this.$element.append(this.$select.append(this.$arrow)).append(this.$drop));
         this.$reset.insertAfter(this.$element);
         this.$drop.append(this.$results.append(this.fontsAsHtml())).hide();

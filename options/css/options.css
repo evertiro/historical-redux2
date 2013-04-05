@@ -485,7 +485,7 @@
  MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
 */
 
-.font-select {
+.redux-font-select {
   font-size: 16px;
   width: 210px;
   position: relative;
@@ -494,7 +494,20 @@
   *display: inline;
 }
 
-.font-select .fs-drop {
+.redux-font-select.fs-reset {
+  width: auto;
+  height: 26px;
+  line-height: 26px;
+  font-size: 16px;
+  margin: 0 0 0 8px;
+}
+
+.redux-font-select.fs-example {
+  width: auto;
+  margin: 8px 0 0 0;
+}
+
+.redux-font-select .fs-drop {
   background: #fff;
   border: 1px solid #aaa;
   border-top: 0;
@@ -508,7 +521,7 @@
   z-index: 999;
 }
 
-.font-select > a {
+.redux-font-select > a {
   background-color: #fff;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(0.5, white));
   background-image: -webkit-linear-gradient(center bottom, #eeeeee 0%, white 50%);
@@ -535,7 +548,7 @@
   text-decoration: none;
 }
 
-.font-select > a span {
+.redux-font-select > a span {
   margin-right: 26px;
   display: block;
   overflow: hidden;
@@ -547,7 +560,7 @@
   cursor: pointer;
 }
 
-.font-select > a div {
+.redux-font-select > a div {
   -webkit-border-radius: 0 4px 4px 0;
   -moz-border-radius   : 0 4px 4px 0;
   border-radius        : 0 4px 4px 0;
@@ -571,7 +584,7 @@
   width: 18px;
 }
 
-.font-select > a div b {
+.redux-font-select > a div b {
   background: url('../img/fs-sprite.png') no-repeat 0 1px;
   display: block;
   width: 100%;
@@ -579,7 +592,7 @@
   cursor: pointer;
 }
 
-.font-select .fs-drop {
+.redux-font-select .fs-drop {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius   : 0 0 4px 4px;
   border-radius        : 0 0 4px 4px;
@@ -588,7 +601,7 @@
   background-clip        : padding-box;
 }
 
-.font-select .fs-results {
+.redux-font-select .fs-results {
   margin: 0 4px 4px 0;
   max-height: 190px;
   width: 200px;
@@ -598,7 +611,7 @@
   overflow-y: auto;
 }
 
-.font-select .fs-results li {
+.redux-font-select .fs-results li {
   line-height: 80%;
   padding: 7px 7px 8px;
   margin: 0;
@@ -606,21 +619,21 @@
   font-size: 18px;
 }
 
-.font-select .fs-results li.active {
+.redux-font-select .fs-results li.active {
   background: #3875d7;
   color: #fff;
   cursor: pointer;
 }
-.font-select .fs-results li em {
+.redux-font-select .fs-results li em {
   background: #feffde;
   font-style: normal;
 }
 
-.font-select .fs-results li.active em {
+.redux-font-select .fs-results li.active em {
   background: transparent;
 }
 
-.font-select-active > a {
+.redux-font-select-active > a {
   -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
   -moz-box-shadow   : 0 0 5px rgba(0,0,0,.3);
   -o-box-shadow     : 0 0 5px rgba(0,0,0,.3);
@@ -628,7 +641,7 @@
   border: 1px solid #5897fb;
 }
 
-.font-select-active > a {
+.redux-font-select-active > a {
   border: 1px solid #aaa;
   -webkit-box-shadow: 0 1px 0 #fff inset;
   -moz-box-shadow   : 0 1px 0 #fff inset;
@@ -650,12 +663,12 @@
   border-bottom-right-radius: 0;
 }
 
-.font-select-active > a div {
+.redux-font-select-active > a div {
   background: transparent;
   border-left: none;
 }
 
-.font-select-active > a div b {
+.redux-font-select-active > a div b {
   background-position: -18px 1px;
 }
 

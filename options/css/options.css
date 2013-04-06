@@ -499,12 +499,21 @@
   height: 26px;
   line-height: 26px;
   font-size: 16px;
-  margin: 0 0 0 8px;
+  vertical-align: top;
+  margin-left: 8px;
 }
 
 .redux-font-select.fs-example {
-  width: auto;
-  margin: 8px 0 0 0;
+  width: 282px;
+  margin: 8px 8px 0 0;
+  min-height: 26px;
+}
+
+.redux-font-select.fs-size {
+  width: 36px;
+  text-align: center;
+  vertical-align: top;
+  margin-top: 8px;
 }
 
 .redux-font-select .fs-drop {

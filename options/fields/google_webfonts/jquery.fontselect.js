@@ -5,8 +5,17 @@ jQuery(function () {
     var this_id = jQuery(this).attr('id');
     var font = jQuery(this).val();
     font = font.replace(/\+/g, ' ').split(':');
-    jQuery('label[for="' + this_id + '"]').css('font-family', font[0]);
-  });  
+    jQuery('#' + this_id + '-example').css('font-family', font[0]);
+  });
+    
+  jQuery('.fs-size').click(function() {
+	var the_original_id = jQuery(this).attr('id').split('-');
+	var the_operation = the_original_id.pop();
+	the_original_id = '#' + the_original_id.join('-') + '-example';
+	var font_size = parseInt(jQuery(the_original_id).css('font-size').replace('px', ''));
+	font_size = (the_operation == 'smaller') ? font_size-1 : font_size+1;
+	jQuery(the_original_id).css('font-size',font_size + 'px');
+  });
 });
 
 /*!

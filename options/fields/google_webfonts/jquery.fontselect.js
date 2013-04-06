@@ -1199,7 +1199,7 @@ jQuery(function () {
       Fontselect.prototype.resetSelected = function(ev){
 
         this.$original.val('').change();
-        $('span', this.$element).text(this.options.placeholder).css({'font-family' : '','font-weight' : '', 'font-style' : ''});
+        $('span', this.$element).text(this.options.placeholder).css({'font-family' : '','font-weight' : '', 'font-style' : '', 'font-size' : ''});
       };
 
       Fontselect.prototype.setupHtml = function(){

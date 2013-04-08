@@ -8,14 +8,17 @@ jQuery(document).ready(function () {
 
     jQuery('.redux-opts-select-hide-below').change(function () {
         var option = jQuery('option:selected', this);
-
+				var amount = jQuery(this).data('amount');
+				
         if (option.attr('data-allow') === 'false') {
             if (jQuery(this).closest('tr').next('tr').is(':visible')) {
-                jQuery(this).closest('tr').next('tr').fadeOut('slow');
+            		jQuery(this).closest('tr').nextAll('tr').slice(0,amount).fadeToggle('slow');
+                //jQuery(this).closest('tr').next('tr').fadeOut('slow');
             }
         } else {
             if (jQuery(this).closest('tr').next('tr').is(':hidden')) {
-                jQuery(this).closest('tr').next('tr').fadeIn('slow');
+            		jQuery(this).closest('tr').nextAll('tr').slice(0,amount).fadeToggle('slow');
+                //jQuery(this).closest('tr').next('tr').fadeIn('slow');
             }
         }
     });

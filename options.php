@@ -5,7 +5,8 @@
  *
  */
 define('Redux_TEXT_DOMAIN', 'redux-opts');
-
+<?php //test; 
+?>
 /*
  *
  * Require the framework class before doing anything else, so we can use the defined URLs and directories.

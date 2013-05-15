@@ -23,9 +23,11 @@ class Redux_Options_select_hide_below {
     */
     function render() {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
-        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $class . ' redux-opts-select-hide-below" >';
+        $next_to_hide = (isset($this->field['next_to_hide'])) ? $this->field['next_to_hide'] : '1';
+        
+        echo '<select id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $class . ' redux-opts-select-hide-below" data-amount="' . $next_to_hide . '">';
         foreach($this->field['options'] as $k => $v) {
-            echo '<option value="' . $k . '" ' . selected($this->value, $k, false) . ' data-allow="' . $v['allow'] . '">' . $v['name'] . '</option>';
+            echo '<option value="' . $k . '" ' . selected($this->value, $k, false) . ' data-allow="' . $v['allow'] . '" >' . $v['name'] . '</option>';
         }
         echo '</select>';
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? ' <span class="description">' . $this->field['desc'] . '</span>' : '';

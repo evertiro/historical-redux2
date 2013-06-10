@@ -23,7 +23,9 @@ class Redux_Options_select {
     */
     function render() {
         $class = (isset($this->field['class'])) ? 'class="' . $this->field['class'] . '" ' : '';
-		if ($this->field['multiselect']) {
+        $array_dims = '';
+        $multiselect = '';
+		if (isset( $this->field['multiselect'] ) && $this->field['multiselect']) {
 			$array_dims = '[]';
 			$multiselect = ' multiple="multiple"';
 			$multiselect .= ' size="' . (isset($this->field['rows']) ? $this->field['rows'] : '6') .'"'; //'rows' is the number of rows to display on multi-select

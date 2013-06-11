@@ -1,22 +1,21 @@
-jQuery(document).ready(function ($) {
-    var googlefont = jQuery('.font').fontselect();
+jQuery(function () {
+  jQuery('.fontselect').fontselect();
+  
+  jQuery(".fontselect").change(function() {
+    var this_id = jQuery(this).attr('id');
+    var font = jQuery(this).val();
+    font = font.replace(/\+/g, ' ').split(':');
+    jQuery('#' + this_id + '-example').css('font-family', font[0]);
+  });
     
-	jQuery(".font").change(function() {
-		fontset(googlefont);
-	});
-
-    function fontset(googlefont) {
-        var relid = googlefont.attr('id');
-
-        // replace + signs with spaces for css
-        var font = googlefont.val().replace(/\+/g, ' ');
-
-        // split font into family and weight
-        font = font.split(':');
-
-        // set family on example
-        jQuery('#' + relid + '.example').css('font-family', font[0]);
-    }
+  jQuery('.fs-size').click(function() {
+	var the_original_id = jQuery(this).attr('id').split('-');
+	var the_operation = the_original_id.pop();
+	the_original_id = '#' + the_original_id.join('-') + '-example';
+	var font_size = parseInt(jQuery(the_original_id).css('font-size').replace('px', ''));
+	font_size = (the_operation == 'smaller') ? font_size-1 : font_size+1;
+	jQuery(the_original_id).css('font-size',font_size + 'px');
+  });
 });
 
 /*!
@@ -24,7 +23,8 @@ jQuery(document).ready(function ($) {
  * Tom Moor, http://tommoor.com
  * Copyright (c) 2011 Tom Moor
  * MIT Licensed
- * @version 0.1
+ * Modified by Keith Miyake to include a reset button
+ * @version 0.1.1
 */
 
 (function($){
@@ -1051,13 +1051,14 @@ jQuery(document).ready(function ($) {
     ];
 
     var settings = $.extend( {
-      style:            'font-select',
+      style:            'redux-font-select',
       placeholder:      'Select a font',
-      lookahead:        2,
+      resettext:        'Reset',
+      lookahead:        6,
       cssUrl:          'http://fonts.googleapis.com/css?family=',
       fonts:            _fonts,
       apiUrl:           'https://www.googleapis.com/webfonts/v1/webfonts',
-      apiKkey:          null,
+      apiKey:           null,
       fetch:            false,
       combine:          false
     }, options);
@@ -1088,6 +1089,7 @@ jQuery(document).ready(function ($) {
             if (data.items && data.items.length > 0) {
               fontselect.options.fonts = [];
               $.each(data.items, function(key, font) {
+              //TO-DO: add selectors for variants and subsets
                 $.each(font.variants, function(key, variant) {
                   var family = font.family.replace(/ /g, '+');
                   if (font.variants.length > 1 || (variant != 400 && variant != 'regular')) {
@@ -1132,18 +1134,19 @@ jQuery(document).ready(function ($) {
 
         $('span', this.$select).click(__bind(this.toggleDrop, this));
         this.$arrow.click(__bind(this.toggleDrop, this));
+        this.$reset.click(__bind(this.resetSelected, this));
       };
 
       Fontselect.prototype.toggleDrop = function(ev){
 
         if(this.active){
-          this.$element.removeClass('font-select-active');
+          this.$element.removeClass('redux-font-select-active');
           this.$top = this.$results.scrollTop();
           this.$drop.hide();
           clearInterval(this.visibleInterval);
 
         } else {
-          this.$element.addClass('font-select-active');
+          this.$element.addClass('redux-font-select-active');
           this.$drop.show();
           this.$results.scrollTop(this.$top);
           this.moveToSelected();
@@ -1193,6 +1196,12 @@ jQuery(document).ready(function ($) {
         $('span', this.$element).text(this.toReadable(font)).css(this.toStyle(font));
       };
 
+      Fontselect.prototype.resetSelected = function(ev){
+
+        this.$original.val('').change();
+        $('span', this.$element).text(this.options.placeholder).css({'font-family' : '','font-weight' : '', 'font-style' : '', 'font-size' : ''});
+      };
+
       Fontselect.prototype.setupHtml = function(){
 
         this.$original.empty().hide();
@@ -1201,7 +1210,9 @@ jQuery(document).ready(function ($) {
         this.$select = $('<a><span>'+ this.options.placeholder +'</span></a>');
         this.$drop = $('<div>', {'class': 'fs-drop'});
         this.$results = $('<ul>', {'class': 'fs-results'});
+        this.$reset = $('<input type="button" class="'+ this.options.style +' fs-reset button" value="'+ this.options.resettext +'" />');
         this.$original.after(this.$element.append(this.$select.append(this.$arrow)).append(this.$drop));
+        this.$reset.insertAfter(this.$element);
         this.$drop.append(this.$results.append(this.fontsAsHtml())).hide();
       };
 

@@ -31,7 +31,7 @@ class Redux_Options_textarea {
 
         <textarea name="<?php echo $name; ?>" id="<?php echo $id; ?>" <?php echo $placeholder; ?> class="<?php echo $class; ?>" rows="<?php echo $rows; ?>"><?php echo esc_attr($this->value); ?></textarea>
 
-        <?php if($this->field['desc'] != '') : ?>
+        <?php if( isset( $this->field['desc'] ) && $this->field['desc'] != '') : ?>
             <br/><span class="description"><?php echo $this->field['desc']; ?></span>
         <?php endif; ?>
 

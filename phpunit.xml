@@ -13,7 +13,7 @@
 		 stopOnSkipped="false"
 		 syntaxCheck="false"
 		 verbose="true"
-		 strict="true"
+		 strict="true">
 	<filter>
 		<blacklist>
 			<directory suffix=".php">./tmp/</directory>

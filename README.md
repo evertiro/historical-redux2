@@ -26,7 +26,7 @@ I develop Redux (and my other projects) because I enjoy them, and almost exclusi
 
 ## Stay In The Loop! ##
 
-[![Follow us on Twitter](http://www.reduxframework.com/twitter.png "Follow us on Twitter")](https://www.twitter.com/ReduxFramework)
+[![Follow us on Twitter](http://iod.unh.edu/Images/Twitter_follow_us.png "Follow us on Twitter")](https://www.twitter.com/ReduxFramework)
 
 ## Getting Redux ##
 

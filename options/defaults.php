@@ -659,7 +659,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['show_import_export']) {
 				echo '<li id="import_export_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['import_icon_type'] == 'image') {
+				if($this->args['icon_type'] == 'image') {
 					$icon = (!isset($this->args['import_icon'])) ? '' : '<img src="' . $this->args['import_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['import_icon_class'])) ? '' : ' ' . $this->args['import_icon_class'];
@@ -690,7 +690,7 @@ if(!class_exists('Redux_Options') ){
 
             if(true === $this->args['dev_mode']) {
 				echo '<li id="dev_mode_default_section_group_li" class="redux-opts-group-tab-link-li">';
-				if($this->args['dev_mode_icon_type'] == 'image') {
+				if($this->args['icon_type'] == 'image') {
 					$icon = (!isset($this->args['dev_mode_icon'])) ? '' : '<img src="' . $this->args['dev_mode_icon'] . '" /> ';
 				} else {
 					$icon_class = (!isset($this->args['dev_mode_icon_class'])) ? '' : ' ' . $this->args['dev_mode_icon_class'];

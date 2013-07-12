@@ -74,6 +74,13 @@ $ git submodule add git://github.com/ghost1227/Redux-Framework/ admin
 
 ## Setting up Redux ##
 
+Before you begin, you might want to replace all instances of ```Redux``` and ```redux``` with your own namespace. Note that the two are not interchangable! This can be done on UNIX-based systems by running the following commands from the root directory of your plugin or theme:
+
+```bash
+$ find . -type f -execdir sed -i'' -e 's/Redux/YourNamespace/g' {} \;
+$ find . -type f -execdir sed -i'' -e 's/redux/yournamespace/g' {} \;
+```
+
 Include Redux in your theme ```functions.php``` or plugin as follows:
 
 ```php

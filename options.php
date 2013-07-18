@@ -22,7 +22,7 @@ if(!class_exists('Redux_Options')) {
  * Custom function for filtering the sections array. Good for child themes to override or add to the sections.
  * Simply include this function in the child themes functions.php file.
  *
- * NOTE: the defined constansts for URLs, and directories will NOT be available at this point in a child theme,
+ * NOTE: the defined constants for URLs, and directories will NOT be available at this point in a child theme,
  * so you must use get_template_directory_uri() if you want to use any of the built in icons
  *
  */

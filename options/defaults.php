@@ -879,7 +879,7 @@ if(!class_exists('Redux_Options') ){
          * @since Redux_Options 1.0.0
         */    
         function _section_desc($section) {
-            $id = substr($section['id'], strlen($this->args['opt_name']), -8);
+            $id = substr($section['id'], strlen($this->args['opt_name']), -strlen('_section'));
 
             if(isset($this->sections[$id]['desc']) && !empty($this->sections[$id]['desc'])) {
                 echo '<div class="redux-opts-section-desc">' . $this->sections[$id]['desc'] . '</div>';

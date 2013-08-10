@@ -101,7 +101,7 @@ function setup_framework_options() {
     $args['footer_text'] = __('<p>This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.</p>', Redux_TEXT_DOMAIN);
 
     // Set footer/credit line.
-    //$args['footer_credit'] = __('<p>This text is displayed in the options panel footer across from the WordPress version (where it normally says \'Thank you for creating with WordPress\'). This field accepts all HTML.</p>', Redux_TEXT_DOMAIN);
+    //$args['footer_credit'] = __('<span id="footer-thankyou">This text is displayed in the options panel footer across from the WordPress version (where it normally says \'Thank you for creating with WordPress\'). This field accepts all HTML.</span>', Redux_TEXT_DOMAIN);
 
     // Setup custom links in the footer for share icons
     $args['share_icons']['twitter'] = array(

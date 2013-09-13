@@ -1,6 +1,6 @@
 ## NOTE ##
 
-Redux Framework is no longer hosted here! Since I am no longer the sole developer, we have moved to an organizational repo [here](https://github.com/ReduxFramework/ReduxFramework)!
+**Redux Framework is no longer hosted here! Since I am no longer the sole developer, we have moved to an organizational repo [here](https://github.com/ReduxFramework/ReduxFramework), or visit [our website](http://reduxframework.com)! This page is kept for historical purposes only.**
 
 # Redux Options Framework v2.0.0 [![Build Status](https://secure.travis-ci.org/ghost1227/Redux-Framework.png?branch=master)](http://travis-ci.org/ghost1227/Redux-Framework)
 

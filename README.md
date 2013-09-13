@@ -1,3 +1,7 @@
+## NOTE ##
+
+Redux Framework is no longer hosted here! Since I am no longer the sole developer, we have moved to an organizational repo [here](https://github.com/ReduxFramework/ReduxFramework)!
+
 # Redux Options Framework v2.0.0 [![Build Status](https://secure.travis-ci.org/ghost1227/Redux-Framework.png?branch=master)](http://travis-ci.org/ghost1227/Redux-Framework)
 
 Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
